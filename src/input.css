@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn-primary {
+        @apply rounded-lg w-full bg-blue-500 px-4 py-2 font-semibold text-white shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+    }
+
+    .btn-success {
+        @apply rounded-lg w-full bg-green-500 px-4 py-2 font-semibold text-white shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75;
+    }
+
+    .section {
+        @apply mx-auto border-green-600 bg-green-50 px-5 mt-2 rounded w-1/2
+    }
+
+    footer {
+        @apply mx-auto bg-gray-100 mt-2 rounded w-1/2 mt-4 text-center h-20 flex flex-col justify-center
+    }
+
+    .login-input {
+        @apply my-2 h-10 w-full rounded p-3
+    }
+
+    a {
+        @apply text-blue-600 visited:text-purple-600
+    }
+}
+
+@layer base {
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+    @font-face {
+        font-family: 'NotoSansTC';
+        src: url('./fonts/Noto_Sans_TC/static/NotoSansTC-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'NotoSansTC';
+        src: url('./fonts/Noto_Sans_TC/static/NotoSansTC-Bold.ttf') format('truetype');
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    html {
+        font-family: "NotoSansTC", "Inter", system-ui, sans-serif;
+    }
+}
