@@ -1,24 +1,3 @@
-# BookStore
-
-### 如何寫 Web Component，以做到類似 Header 共用
-
-
-header.html
-```
-<template id="my-header">
-  <style>
-    p {
-      color: white;
-      background-color: #666;
-      padding: 5px;
-    }
-  </style>
-  <p>My paragraph</p>
-</template>
-```
-
-header.js
-```
 document.addEventListener("DOMContentLoaded", function () {
   fetch("/src/fragements/header/header.html")
     .then((response) => {
@@ -45,23 +24,3 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     });
 });
-
-```
-
-index.html
-```
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>阿偉特書店</title>
-    <link href="./output.css" rel="stylesheet" />
-    <script src="./fragements/header/header.js" defer></script>
-</head>
-<body>
-    <my-header></my-header>
-</body>
-</html>
-```
-
