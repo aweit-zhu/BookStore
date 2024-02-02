@@ -61,10 +61,24 @@
             />
           </svg>
           <button class="btn-link">繁體 |</button>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-            <path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5a1.5 1.5 0 0 0 1.5 1.5h6a1.5 1.5 0 0 0 1.5-1.5V15a.75.75 0 0 1 1.5 0v3.75a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3V9A.75.75 0 0 1 15 9V5.25a1.5 1.5 0 0 0-1.5-1.5h-6Zm5.03 4.72a.75.75 0 0 1 0 1.06l-1.72 1.72h10.94a.75.75 0 0 1 0 1.5H10.81l1.72 1.72a.75.75 0 1 1-1.06 1.06l-3-3a.75.75 0 0 1 0-1.06l3-3a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="h-6 w-6"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5a1.5 1.5 0 0 0 1.5 1.5h6a1.5 1.5 0 0 0 1.5-1.5V15a.75.75 0 0 1 1.5 0v3.75a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3V9A.75.75 0 0 1 15 9V5.25a1.5 1.5 0 0 0-1.5-1.5h-6Zm5.03 4.72a.75.75 0 0 1 0 1.06l-1.72 1.72h10.94a.75.75 0 0 1 0 1.5H10.81l1.72 1.72a.75.75 0 1 1-1.06 1.06l-3-3a.75.75 0 0 1 0-1.06l3-3a.75.75 0 0 1 1.06 0Z"
+              clip-rule="evenodd"
+            />
           </svg>
-          <button class="btn-link" onclick="window.location.href='./login.html'">登出</button>            
+          <button
+            class="btn-link"
+            onclick="window.location.href='./login.html'"
+          >
+            登出
+          </button>
         </div>
       </div>
     </header>
@@ -77,15 +91,165 @@
           class="h-full w-full"
           id="advertisement"
         />
-        <h2 class="absolute-center text-nowrap rounded bg-white p-2 text-center text-green-600"> Welcome To Aweit bookstore !!</h2>
+        <h2
+          class="absolute-center text-nowrap rounded bg-white p-2 text-center text-green-600"
+        >
+          Welcome To Aweit bookstore !!
+        </h2>
       </div>
     </section>
-    <section class="section">搜尋框</section>
-    <section class="section">全站分類</section>
-    <section class="section">熱門搜尋</section>
-    <section class="section">全站熱搜榜</section>
-    <section class="section">網站導覽</section>
-    <section class="section">版權所有</section>
+    <!--搜尋框-->
+    <section class="section flex h-32 w-2/3">
+      <img class="me-2 flex-shrink-0 rounded" src="img/book.png" alt="" />
+      <p class="self-center text-nowrap text-lg">Aweit書店</p>
+      <div
+        class="relative ms-5 flex self-center rounded-full border-2 border-green-600"
+      >
+        <select
+          class="w-40 rounded-full border-none bg-none p-2 text-green-500 focus:outline-none"
+        >
+          <option value="1">全部</option>
+          <option value="2">資訊</option>
+          <option value="3">語言</option>
+        </select>
+        <input
+          type="text"
+          class="peer w-80 rounded-full border-none p-2 focus:outline-none"
+          placeholder="請輸入關鍵字"
+          id="keyword"
+        />
+        <ul
+          class="invisible absolute top-14 h-48 w-full overflow-y-auto rounded border-2 border-green-600 p-2 peer-focus:visible z-50 bg-white"
+        >
+          <li class="border-b-2">Java</li>
+          <li>Javascript</li>
+        </ul>
+        <!-- X -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="me-2 cursor-pointer self-center hover:text-green-500"
+          width="16"
+          height="16"
+          onclick="document.querySelector('#keyword').value = ''"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <!-- 放大鏡 -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="me-2 cursor-pointer self-center"
+          width="32"
+          height="32"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </div>
+    </section>
+    <!-- 熱門搜尋 -->
+    <section class="section w-full flex flex-col justify-center items-center">
+      <div class="flex h-56 w-full rounded justify-center my-4">
+        <div class="me-3 w-72 rounded shadow-black relative flex-shrink-0">
+          <img
+            src="https://picsum.photos/id/2/288/224"
+            class="h-full w-full rounded"
+          />
+          <p class="text-nowrap text-lg absolute absolute-x-center">資訊</p>
+        </div>
+        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
+            <img
+                src="https://picsum.photos/240/224?random=1"
+                class="h-full w-full rounded opacity-90"
+            />
+            <p class="text-nowrap text-lg absolute absolute-x-center">Java</p>
+        </div>
+        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
+            <img
+                src="https://picsum.photos/240/224?random=2"
+                class="h-full w-full rounded opacity-90"
+            />
+            <p class="text-nowrap text-lg absolute absolute-x-center">Javascript</p>
+        </div>
+        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
+            <img
+                src="https://picsum.photos/240/224?random=3"
+                class="h-full w-full rounded opacity-90"
+            />
+            <p class="text-nowrap text-lg absolute absolute-x-center">Spring</p>
+        </div>
+        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
+            <img
+                src="https://picsum.photos/240/224?random=4"
+                class="h-full w-full rounded opacity-90"
+            />
+            <p class="text-nowrap text-lg absolute absolute-x-center">Python</p>
+        </div>
+        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
+            <img
+                src="https://picsum.photos/240/224?random=5"
+                class="h-full w-full rounded opacity-90"
+            />
+            <p class="text-nowrap text-lg absolute absolute-x-center">SQL</p>
+        </div>
+      </div>
+      <div class="flex h-56 w-full rounded justify-center my-4">
+        <div class="me-3 w-72 rounded shadow-black relative flex-shrink-0">
+          <img
+            src="https://picsum.photos/288/224?random=99"
+            class="h-full w-full rounded"
+          />
+          <p class="text-nowrap text-lg absolute absolute-x-center">語言</p>
+        </div>
+        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
+            <img
+                src="https://picsum.photos/240/224?random=98"
+                class="h-full w-full rounded opacity-90"
+            />
+            <p class="text-nowrap text-lg absolute absolute-x-center">華語文</p>
+        </div>
+        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
+            <img
+                src="https://picsum.photos/240/224?random=97"
+                class="h-full w-full rounded opacity-90"
+            />
+            <p class="text-nowrap text-lg absolute absolute-x-center">英語</p>
+        </div>
+        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
+            <img
+                src="https://picsum.photos/240/224?random=96"
+                class="h-full w-full rounded opacity-90"
+            />
+            <p class="text-nowrap text-lg absolute absolute-x-center">法語</p>
+        </div>
+        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
+            <img
+                src="https://picsum.photos/240/224?random=95"
+                class="h-full w-full rounded opacity-90"
+            />
+            <p class="text-nowrap text-lg absolute absolute-x-center">多益檢定</p>
+        </div>
+        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
+            <img
+                src="https://picsum.photos/240/224?random=94"
+                class="h-full w-full rounded opacity-90"
+            />
+            <p class="text-nowrap text-lg absolute absolute-x-center">全民英檢</p>
+        </div>
+      </div>
+    </section>
+    <section class="section h-32 w-2/3 mt-12">網站導覽</section>
+    <section class="section h-32 w-2/3">版權所有</section>
     <script>
       slide(document.querySelector("#advertisement"), 5000);
     </script>
