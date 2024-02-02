@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer components {
+
     .btn-primary {
         @apply rounded-lg w-full bg-blue-500 px-4 py-2 font-semibold text-white shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
     }
@@ -11,7 +12,15 @@
         @apply rounded-lg w-full bg-green-500 px-4 py-2 font-semibold text-white shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75;
     }
 
+    .btn-link {
+        @apply mx-1 cursor-pointer hover:text-green-600 text-nowrap
+    }
+
     .section {
+        @apply mx-auto px-5 mt-2 rounded w-1/2
+    }
+
+    .section-success {
         @apply mx-auto border-green-600 bg-green-50 px-5 mt-2 rounded w-1/2
     }
 
@@ -26,9 +35,16 @@
     a {
         @apply text-blue-600 visited:text-purple-600
     }
+
+    .absolute-center {
+        @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform;
+    }
+
 }
 
 @layer base {
+
+    /* 全域加 字型設定 */
 
     @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 

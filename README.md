@@ -25,27 +25,33 @@ document.addEventListener("DOMContentLoaded", function () {
       return response.text();
     })
     .then((html) => {
+      // 將內容插入到文檔中
       document.body.insertAdjacentHTML("beforeend", html);
-      customElements.define(
-        "my-header",
-        class extends HTMLElement {
-          constructor() {
-            super();
-            let template = document.getElementById("my-header");
-            // 確保找到相應的 template 元素
-            if (template) {
+      let template = document.getElementById("my-header");
+      // 確保找到相應的 template 元素
+      if(template) {
+        customElements.define(
+          "my-header",
+          class extends HTMLElement {
+            constructor() {
+              super();
               let templateContent = template.content;
               const shadowRoot = this.attachShadow({ mode: "open" });
               shadowRoot.appendChild(templateContent.cloneNode(true));
-            } else {
-              console.error("Template with id 'my-header' not found.");
+
+              // 整合 Tailwind CSS 到主文檔： <link href="./output.css" rel="stylesheet" />
+              let link = document.createElement('link');
+              link.setAttribute('href','/src/output.css');
+              link.setAttribute('rel','stylesheet');
+              shadowRoot.appendChild(link);
             }
-          }
-        },
-      );
+          },
+        );
+      } else {
+        console.error("Template with id 'my-header' not found.");
+      }
     });
 });
-
 ```
 
 index.html
@@ -65,3 +71,16 @@ index.html
 </html>
 ```
 
+### TailwindCSS v3.4.1 <https://tailwindcss.com/docs>
+
+### Icon - heroicons v2.1.1 <https://heroicons.com/>
+
+### 圖片素材 - pxhere <https://pxhere.com/en/photos?q=book&search=>
+
+### 假圖 - Lorem Picsum <https://picsum.photos/>
+
+### JS 加型別
+
+```
+var /** @type {HTMLImageElement} */ img = document.querySelector("#img");
+```
