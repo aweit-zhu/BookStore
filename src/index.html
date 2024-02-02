@@ -119,7 +119,7 @@
           id="keyword"
         />
         <ul
-          class="invisible absolute top-14 h-48 w-full overflow-y-auto rounded border-2 border-green-600 p-2 peer-focus:visible z-50 bg-white"
+          class="invisible absolute top-14 z-50 h-48 w-full overflow-y-auto rounded border-2 border-green-600 bg-white p-2 peer-focus:visible"
         >
           <li class="border-b-2">Java</li>
           <li>Javascript</li>
@@ -158,98 +158,134 @@
       </div>
     </section>
     <!-- 熱門搜尋 -->
-    <section class="section w-full flex flex-col justify-center items-center">
-      <div class="flex h-56 w-full rounded justify-center my-4">
-        <div class="me-3 w-72 rounded shadow-black relative flex-shrink-0">
+    <section class="section flex w-full flex-col items-center justify-center">
+      <div class="my-4 flex h-56 w-full justify-center rounded">
+        <div class="relative me-3 w-72 flex-shrink-0 rounded shadow-black">
           <img
             src="https://picsum.photos/id/2/288/224"
-            class="h-full w-full rounded"
+            class="h-full w-full cursor-pointer rounded"
           />
-          <p class="text-nowrap text-lg absolute absolute-x-center">資訊</p>
+          <p class="absolute-x-center absolute text-nowrap text-lg">資訊</p>
         </div>
-        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
-            <img
-                src="https://picsum.photos/240/224?random=1"
-                class="h-full w-full rounded opacity-90"
-            />
-            <p class="text-nowrap text-lg absolute absolute-x-center">Java</p>
+        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
+          <img
+            src="https://picsum.photos/240/224?random=1"
+            class="h-full w-full cursor-pointer rounded opacity-90"
+          />
+          <p class="absolute-x-center absolute text-nowrap text-lg">Java</p>
         </div>
-        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
-            <img
-                src="https://picsum.photos/240/224?random=2"
-                class="h-full w-full rounded opacity-90"
-            />
-            <p class="text-nowrap text-lg absolute absolute-x-center">Javascript</p>
+        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
+          <img
+            src="https://picsum.photos/240/224?random=2"
+            class="h-full w-full cursor-pointer rounded opacity-90"
+          />
+          <p class="absolute-x-center absolute text-nowrap text-lg">
+            Javascript
+          </p>
         </div>
-        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
-            <img
-                src="https://picsum.photos/240/224?random=3"
-                class="h-full w-full rounded opacity-90"
-            />
-            <p class="text-nowrap text-lg absolute absolute-x-center">Spring</p>
+        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
+          <img
+            src="https://picsum.photos/240/224?random=3"
+            class="h-full w-full cursor-pointer rounded opacity-90"
+          />
+          <p class="absolute-x-center absolute text-nowrap text-lg">Spring</p>
         </div>
-        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
-            <img
-                src="https://picsum.photos/240/224?random=4"
-                class="h-full w-full rounded opacity-90"
-            />
-            <p class="text-nowrap text-lg absolute absolute-x-center">Python</p>
+        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
+          <img
+            src="https://picsum.photos/240/224?random=4"
+            class="h-full w-full cursor-pointer rounded opacity-90"
+          />
+          <p class="absolute-x-center absolute text-nowrap text-lg">Python</p>
         </div>
-        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
-            <img
-                src="https://picsum.photos/240/224?random=5"
-                class="h-full w-full rounded opacity-90"
-            />
-            <p class="text-nowrap text-lg absolute absolute-x-center">SQL</p>
+        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
+          <img
+            src="https://picsum.photos/240/224?random=5"
+            class="h-full w-full cursor-pointer rounded opacity-90"
+          />
+          <p class="absolute-x-center absolute text-nowrap text-lg">SQL</p>
         </div>
       </div>
-      <div class="flex h-56 w-full rounded justify-center my-4">
-        <div class="me-3 w-72 rounded shadow-black relative flex-shrink-0">
+      <div class="my-4 flex h-56 w-full justify-center rounded">
+        <div class="relative me-3 w-72 flex-shrink-0 rounded shadow-black">
           <img
             src="https://picsum.photos/288/224?random=99"
-            class="h-full w-full rounded"
+            class="h-full w-full cursor-pointer rounded"
           />
-          <p class="text-nowrap text-lg absolute absolute-x-center">語言</p>
+          <p class="absolute-x-center absolute text-nowrap text-lg">語言</p>
         </div>
-        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
-            <img
-                src="https://picsum.photos/240/224?random=98"
-                class="h-full w-full rounded opacity-90"
-            />
-            <p class="text-nowrap text-lg absolute absolute-x-center">華語文</p>
+        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
+          <img
+            src="https://picsum.photos/240/224?random=98"
+            class="h-full w-full cursor-pointer rounded opacity-90"
+          />
+          <p class="absolute-x-center absolute text-nowrap text-lg">華語文</p>
         </div>
-        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
-            <img
-                src="https://picsum.photos/240/224?random=97"
-                class="h-full w-full rounded opacity-90"
-            />
-            <p class="text-nowrap text-lg absolute absolute-x-center">英語</p>
+        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
+          <img
+            src="https://picsum.photos/240/224?random=97"
+            class="h-full w-full cursor-pointer rounded opacity-90"
+          />
+          <p class="absolute-x-center absolute text-nowrap text-lg">英語</p>
         </div>
-        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
-            <img
-                src="https://picsum.photos/240/224?random=96"
-                class="h-full w-full rounded opacity-90"
-            />
-            <p class="text-nowrap text-lg absolute absolute-x-center">法語</p>
+        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
+          <img
+            src="https://picsum.photos/240/224?random=96"
+            class="h-full w-full cursor-pointer rounded opacity-90"
+          />
+          <p class="absolute-x-center absolute text-nowrap text-lg">法語</p>
         </div>
-        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
-            <img
-                src="https://picsum.photos/240/224?random=95"
-                class="h-full w-full rounded opacity-90"
-            />
-            <p class="text-nowrap text-lg absolute absolute-x-center">多益檢定</p>
+        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
+          <img
+            src="https://picsum.photos/240/224?random=95"
+            class="h-full w-full cursor-pointer rounded opacity-90"
+          />
+          <p class="absolute-x-center absolute text-nowrap text-lg">多益檢定</p>
         </div>
-        <div class="mx-1 w-44 rounded border-2 relative flex-shrink-0">
-            <img
-                src="https://picsum.photos/240/224?random=94"
-                class="h-full w-full rounded opacity-90"
-            />
-            <p class="text-nowrap text-lg absolute absolute-x-center">全民英檢</p>
+        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
+          <img
+            src="https://picsum.photos/240/224?random=94"
+            class="h-full w-full cursor-pointer rounded opacity-90"
+          />
+          <p class="absolute-x-center absolute text-nowrap text-lg">全民英檢</p>
         </div>
       </div>
     </section>
-    <section class="section h-32 w-2/3 mt-12">網站導覽</section>
-    <section class="section h-32 w-2/3">版權所有</section>
+    <section class="section mt-12 flex h-50 w-full justify-center bg-green-800">
+      <div class="m-8 flex flex-1 flex-col items-center justify-start">
+        <div class="mb-6">
+          <span class="me-2 w-20 border-2 border-green-600"></span>
+          <span class="cursor-pointer font-bold text-white hover:text-yellow-400">關於我們</span>
+        </div>
+        <div class="cursor-pointer font-bold text-white mb-2">關於阿偉特書店</div>
+      </div>
+      <div class="m-8 flex flex-1 flex-col items-center justify-start">
+        <div class="mb-6">
+          <span class="me-2 w-20 border-2 border-green-600"></span>
+          <span class="cursor-pointer font-bold text-white hover:text-yellow-400">好站連結</span>
+        </div>
+        <div class="cursor-pointer font-bold text-white mb-2">天瓏書局</div>
+        <div class="cursor-pointer font-bold text-white mb-2">光南書局</div>
+      </div>
+      <div class="m-8 flex flex-1 flex-col items-center justify-start">
+        <div class="mb-6">
+          <span class="me-2 w-20 border-2 border-green-600"></span>
+          <span class="cursor-pointer font-bold  text-white hover:text-yellow-400">會員服務</span>
+        </div>
+        <div class="cursor-pointer font-bold text-white mb-2">加入會員</div>
+        <div class="cursor-pointer font-bold text-white mb-2">查詢帳號密碼</div>
+      </div>
+      <div class="m-8 flex flex-1 flex-col items-center justify-start">
+        <div class="mb-6">
+          <span class="me-2 w-20 border-2 border-green-600"></span>
+          <span class="cursor-pointer font-bold text-white hover:text-yellow-400">客服中心</span>
+        </div>
+        <div class="cursor-pointer font-bold text-white mb-2">常見問題</div>
+        <div class="cursor-pointer font-bold text-white mb-2">線上客服</div>
+        <div class="cursor-pointer font-bold text-white mb-2">客服信箱</div>
+        <div class="cursor-pointer font-bold text-white mb-2">客服專線：02-XXXXXXX</div>
+      </div>
+    </section>
+    <section class="section w-ful h-80">版權所有</section>
     <script>
       slide(document.querySelector("#advertisement"), 5000);
     </script>
