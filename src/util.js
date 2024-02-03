@@ -1,7 +1,7 @@
-function slide(/** @type {HTMLImageElement} */img ,milliseconds) {
+function slide(/** @type {HTMLImageElement} */ img, milliseconds) {
     var src = img.src;
     setInterval(() => {
-        img.src = src + '? random='+ rand(1,50);
+        img.src = src + '?random=' + rand(1, 50);
     }, milliseconds);
 }
 
@@ -16,3 +16,12 @@ function printProtoTypes(object) {
         console.log(object);
     } while (object);
 }
+
+const locale = 'zh-TW';
+const currencyCode = 'TWD';
+const currency = new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: currencyCode,
+});
+
+export { slide, rand, printProtoTypes, currency };

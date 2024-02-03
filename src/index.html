@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>阿偉特書店</title>
     <link href="./output.css" rel="stylesheet" />
-    <script src="./util.js"></script>
+    <script src="/src/components/BookComponent.js"></script>
   </head>
   <body>
     <!-- Header -->
@@ -82,6 +82,7 @@
         </div>
       </div>
     </header>
+
     <!-- 廣告看板 -->
     <section class="section h-40 w-full px-0">
       <div class="relative h-full w-full">
@@ -98,6 +99,7 @@
         </h2>
       </div>
     </section>
+
     <!--搜尋框-->
     <section class="section flex h-32 w-2/3">
       <img class="me-2 flex-shrink-0 rounded" src="img/book.png" alt="" />
@@ -157,9 +159,10 @@
         </svg>
       </div>
     </section>
+
     <!-- 熱門搜尋 -->
     <section class="section flex w-full flex-col items-center justify-center">
-      <div class="my-4 flex h-56 w-full justify-center rounded">
+      <div class="my-4 flex h-56 w-full justify-center rounded" id="IT">
         <div class="relative me-3 w-72 flex-shrink-0 rounded shadow-black">
           <img
             src="https://picsum.photos/id/2/288/224"
@@ -167,45 +170,13 @@
           />
           <p class="absolute-x-center absolute text-nowrap text-lg">資訊</p>
         </div>
-        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
-          <img
-            src="https://picsum.photos/240/224?random=1"
-            class="h-full w-full cursor-pointer rounded opacity-90"
-          />
-          <p class="absolute-x-center absolute text-nowrap text-lg">Java</p>
-        </div>
-        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
-          <img
-            src="https://picsum.photos/240/224?random=2"
-            class="h-full w-full cursor-pointer rounded opacity-90"
-          />
-          <p class="absolute-x-center absolute text-nowrap text-lg">
-            Javascript
-          </p>
-        </div>
-        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
-          <img
-            src="https://picsum.photos/240/224?random=3"
-            class="h-full w-full cursor-pointer rounded opacity-90"
-          />
-          <p class="absolute-x-center absolute text-nowrap text-lg">Spring</p>
-        </div>
-        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
-          <img
-            src="https://picsum.photos/240/224?random=4"
-            class="h-full w-full cursor-pointer rounded opacity-90"
-          />
-          <p class="absolute-x-center absolute text-nowrap text-lg">Python</p>
-        </div>
-        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
-          <img
-            src="https://picsum.photos/240/224?random=5"
-            class="h-full w-full cursor-pointer rounded opacity-90"
-          />
-          <p class="absolute-x-center absolute text-nowrap text-lg">SQL</p>
-        </div>
+        <book-component id="book1" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book2" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book3" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book4" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book5" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
       </div>
-      <div class="my-4 flex h-56 w-full justify-center rounded">
+      <div class="my-4 flex h-56 w-full justify-center rounded" id="Lang">
         <div class="relative me-3 w-72 flex-shrink-0 rounded shadow-black">
           <img
             src="https://picsum.photos/288/224?random=99"
@@ -213,84 +184,111 @@
           />
           <p class="absolute-x-center absolute text-nowrap text-lg">語言</p>
         </div>
-        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
-          <img
-            src="https://picsum.photos/240/224?random=98"
-            class="h-full w-full cursor-pointer rounded opacity-90"
-          />
-          <p class="absolute-x-center absolute text-nowrap text-lg">華語文</p>
+        <book-component id="book6" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book7" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book8" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book9" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book10" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
+      </div>
+    </section>
+
+    <!-- 網站導覽 -->
+    <section class="section h-50 mt-12 flex w-full justify-center bg-green-800">
+      <div class="m-8 flex flex-1 flex-col items-center justify-start">
+        <div class="mb-6">
+          <span class="me-2 w-20 border-2 border-green-600"></span>
+          <span
+            class="cursor-pointer font-bold text-white hover:text-yellow-400"
+            >關於我們</span
+          >
         </div>
-        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
-          <img
-            src="https://picsum.photos/240/224?random=97"
-            class="h-full w-full cursor-pointer rounded opacity-90"
-          />
-          <p class="absolute-x-center absolute text-nowrap text-lg">英語</p>
+        <div class="mb-2 cursor-pointer font-bold text-white">
+          關於阿偉特書店
         </div>
-        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
-          <img
-            src="https://picsum.photos/240/224?random=96"
-            class="h-full w-full cursor-pointer rounded opacity-90"
-          />
-          <p class="absolute-x-center absolute text-nowrap text-lg">法語</p>
+      </div>
+      <div class="m-8 flex flex-1 flex-col items-center justify-start">
+        <div class="mb-6">
+          <span class="me-2 w-20 border-2 border-green-600"></span>
+          <span
+            class="cursor-pointer font-bold text-white hover:text-yellow-400"
+            >好站連結</span
+          >
         </div>
-        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
-          <img
-            src="https://picsum.photos/240/224?random=95"
-            class="h-full w-full cursor-pointer rounded opacity-90"
-          />
-          <p class="absolute-x-center absolute text-nowrap text-lg">多益檢定</p>
+        <div class="mb-2 cursor-pointer font-bold text-white">天瓏書局</div>
+        <div class="mb-2 cursor-pointer font-bold text-white">光南書局</div>
+      </div>
+      <div class="m-8 flex flex-1 flex-col items-center justify-start">
+        <div class="mb-6">
+          <span class="me-2 w-20 border-2 border-green-600"></span>
+          <span
+            class="cursor-pointer font-bold text-white hover:text-yellow-400"
+            >會員服務</span
+          >
         </div>
-        <div class="relative mx-1 w-44 flex-shrink-0 rounded border-2">
-          <img
-            src="https://picsum.photos/240/224?random=94"
-            class="h-full w-full cursor-pointer rounded opacity-90"
-          />
-          <p class="absolute-x-center absolute text-nowrap text-lg">全民英檢</p>
+        <div class="mb-2 cursor-pointer font-bold text-white">加入會員</div>
+        <div class="mb-2 cursor-pointer font-bold text-white">查詢帳號密碼</div>
+      </div>
+      <div class="m-8 flex flex-1 flex-col items-center justify-start">
+        <div class="mb-6">
+          <span class="me-2 w-20 border-2 border-green-600"></span>
+          <span
+            class="cursor-pointer font-bold text-white hover:text-yellow-400"
+            >客服中心</span
+          >
+        </div>
+        <div class="mb-2 cursor-pointer font-bold text-white">常見問題</div>
+        <div class="mb-2 cursor-pointer font-bold text-white">線上客服</div>
+        <div class="mb-2 cursor-pointer font-bold text-white">客服信箱</div>
+        <div class="mb-2 cursor-pointer font-bold text-white">
+          客服專線：02-XXXXXXX
         </div>
       </div>
     </section>
-    <section class="section mt-12 flex h-50 w-full justify-center bg-green-800">
-      <div class="m-8 flex flex-1 flex-col items-center justify-start">
-        <div class="mb-6">
-          <span class="me-2 w-20 border-2 border-green-600"></span>
-          <span class="cursor-pointer font-bold text-white hover:text-yellow-400">關於我們</span>
-        </div>
-        <div class="cursor-pointer font-bold text-white mb-2">關於阿偉特書店</div>
-      </div>
-      <div class="m-8 flex flex-1 flex-col items-center justify-start">
-        <div class="mb-6">
-          <span class="me-2 w-20 border-2 border-green-600"></span>
-          <span class="cursor-pointer font-bold text-white hover:text-yellow-400">好站連結</span>
-        </div>
-        <div class="cursor-pointer font-bold text-white mb-2">天瓏書局</div>
-        <div class="cursor-pointer font-bold text-white mb-2">光南書局</div>
-      </div>
-      <div class="m-8 flex flex-1 flex-col items-center justify-start">
-        <div class="mb-6">
-          <span class="me-2 w-20 border-2 border-green-600"></span>
-          <span class="cursor-pointer font-bold  text-white hover:text-yellow-400">會員服務</span>
-        </div>
-        <div class="cursor-pointer font-bold text-white mb-2">加入會員</div>
-        <div class="cursor-pointer font-bold text-white mb-2">查詢帳號密碼</div>
-      </div>
-      <div class="m-8 flex flex-1 flex-col items-center justify-start">
-        <div class="mb-6">
-          <span class="me-2 w-20 border-2 border-green-600"></span>
-          <span class="cursor-pointer font-bold text-white hover:text-yellow-400">客服中心</span>
-        </div>
-        <div class="cursor-pointer font-bold text-white mb-2">常見問題</div>
-        <div class="cursor-pointer font-bold text-white mb-2">線上客服</div>
-        <div class="cursor-pointer font-bold text-white mb-2">客服信箱</div>
-        <div class="cursor-pointer font-bold text-white mb-2">客服專線：02-XXXXXXX</div>
-      </div>
+
+    <!-- 版權 -->
+    <section class="section w-full p-2 text-center">
+      阿偉特股份有限公司地址：XXX 台北市XXX76巷15弄18號<br />
+      Copyright © since 1995 books.com.tw All Rights Reserved.
     </section>
-    <section class="section w-full text-center p-2">
-        阿偉特股份有限公司地址：XXX 台北市XXX76巷15弄18號<br>
-        Copyright © since 1995 books.com.tw All Rights Reserved.
-    </section>
-    <script>
-      slide(document.querySelector("#advertisement"), 5000);
+
+    <template id="book-component-template">
+        <div>
+          <img src="#" class="mx-auto mt-2 h-3/4 w-4/5 cursor-pointer rounded opacity-90"/>
+          <p class="absolute-x-center absolute text-nowrap text-lg" id="bookName">bookName</p>
+          <p class="absolute-x-center absolute bottom-2 text-nowrap text-lg text-red-500" id="price">price</p>
+        </div>
+    </template>
+
+    <script type="module">
+        
+        import { slide,currency } from '/src/util.js';
+        
+        slide(document.querySelector("#advertisement"), 5000);
+
+        var books = [
+            new Book(1, "IT", "Java", 400),
+            new Book(2, "IT", "Javascript", 400),
+            new Book(3, "IT", "Spring", 700),
+            new Book(4, "IT", "Python", 350),
+            new Book(5, "IT", "SQL", 400),
+            new Book(6, "Lang", "華語文", 600),
+            new Book(7, "Lang", "英語", 800),
+            new Book(8, "Lang", "法語", 800),
+            new Book(9, "Lang", "多益檢定", 1700),
+            new Book(10, "Lang", "全民英檢", 1500),
+        ];
+
+        let template = document.getElementById("book-component-template");
+        books.map(book => {
+            book.price = currency.format(book.price);
+            const bookComponent = document.querySelector(`#book${book.id}`);
+            if(bookComponent){
+                bookComponent.template = template;
+                bookComponent.book = book;
+            }
+        });
     </script>
+
+    
   </body>
 </html>
