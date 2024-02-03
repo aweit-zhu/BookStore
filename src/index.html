@@ -7,7 +7,7 @@
     <link href="./output.css" rel="stylesheet" />
     <script src="/src/components/BookComponent.js"></script>
   </head>
-  <body>
+  <body class="overflow-auto" style="min-width: 600px;">
     <!-- Header -->
     <header class="flex h-11 justify-center text-nowrap bg-white">
       <div class="flex w-2/3 justify-between">
@@ -101,14 +101,14 @@
     </section>
 
     <!--搜尋框-->
-    <section class="section flex h-32 w-2/3">
-      <img class="me-2 flex-shrink-0 rounded" src="img/book.png" alt="" />
-      <p class="self-center text-nowrap text-lg">Aweit書店</p>
-      <div
-        class="relative ms-5 flex self-center rounded-full border-2 border-green-600"
-      >
+    <section class="section flex h-32 w-2/3 justify-center">
+      <div class="flex-shrink-0 rounded self-center hidden md:block">
+        <img class="w-10 h-10 mx-auto" src="img/book.png"/>
+        <p class="self-center text-center text-nowrap md:text-lg">Aweit書店</p>
+      </div>
+      <div class="relative ms-5 flex self-center rounded-full border-2 border-green-600">
         <select
-          class="w-40 rounded-full border-none bg-none p-2 text-green-500 focus:outline-none"
+          class="md:w-40 rounded-full border-none bg-none p-2 text-green-500 focus:outline-none"
         >
           <option value="1">全部</option>
           <option value="2">資訊</option>
@@ -116,7 +116,7 @@
         </select>
         <input
           type="text"
-          class="peer w-80 rounded-full border-none p-2 focus:outline-none"
+          class="peer md:w-80 rounded-full border-none p-2 focus:outline-none"
           placeholder="請輸入關鍵字"
           id="keyword"
         />
@@ -161,34 +161,34 @@
     </section>
 
     <!-- 熱門搜尋 -->
-    <section class="section flex w-full flex-col items-center justify-center">
-      <div class="my-4 flex h-56 w-full justify-center rounded" id="IT">
-        <div class="relative me-3 w-72 flex-shrink-0 rounded shadow-black cursor-pointer">
+    <section class="section flex w-full flex-col items-center justify-center overflow-x-auto">
+      <div class="my-4 flex h-56 w-full justify-start lg:justify-center rounded" id="IT">
+        <div class="relative flex-shrink-0 w-44 md:w-72 rounded cursor-pointer">
             <img
                 src="https://picsum.photos/id/2/288/224"
                 class="h-full w-3/4 rounded-3xl mx-auto opacity-60"
             />
             <p class="absolute-x-center bottom-0 absolute text-nowrap text-white text-center text-lg bg-gradient-to-r from-green-500 w-3/4 rounded">資訊</p>
         </div>
-        <book-component id="book1" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
-        <book-component id="book2" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
-        <book-component id="book3" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
-        <book-component id="book4" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
-        <book-component id="book5" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book1" class="relative mx-1 w-32 md:w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book2" class="relative mx-1 w-32 md:w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book3" class="relative mx-1 w-32 md:w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book4" class="relative mx-1 w-32 md:w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book5" class="relative mx-1 w-32 md:w-44 flex-shrink-0 rounded border-2"></book-component>
       </div>
-      <div class="my-4 flex h-56 w-full justify-center rounded" id="Lang">
-        <div class="relative me-3 w-72 flex-shrink-0 rounded shadow-black cursor-pointer ">
+      <div class="my-4 flex h-56 w-full justify-start lg:justify-center rounded" id="Lang">
+        <div class="relative flex-shrink-0 w-44 md:w-72 rounded cursor-pointer">
           <img
             src="https://picsum.photos/288/224?random=99"
             class="h-full w-3/4 rounded-3xl mx-auto opacity-60"
           />
           <p class="absolute-x-center bottom-0 absolute text-nowrap text-white text-center text-lg bg-gradient-to-r from-purple-500 w-3/4 rounded">語言</p>
         </div>
-        <book-component id="book6" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
-        <book-component id="book7" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
-        <book-component id="book8" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
-        <book-component id="book9" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
-        <book-component id="book10" class="relative mx-1 w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book6" class="relative mx-1 w-32 md:w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book7" class="relative mx-1 w-32 md:w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book8" class="relative mx-1 w-32 md:w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book9" class="relative mx-1 w-32 md:w-44 flex-shrink-0 rounded border-2"></book-component>
+        <book-component id="book10" class="relative mx-1 w-32 md:w-44 flex-shrink-0 rounded border-2"></book-component>
       </div>
     </section>
 
