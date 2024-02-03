@@ -75,6 +75,8 @@ index.html
 
 ### Icon - heroicons v2.1.1 <https://heroicons.com/>
 
+### Icon - Bootstrap <https://icons.getbootstrap.com/?q=logou>
+
 ### 圖片素材 - pxhere <https://pxhere.com/en/photos?q=book&search=>
 
 ### 假圖 - Lorem Picsum <https://picsum.photos/>
