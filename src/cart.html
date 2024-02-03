@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="./output.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-    <script src="/src/components/BookComponent.js"></script>
+
 </head>
 
 <body class="overflow-auto" style="min-width: 600px;">
@@ -37,14 +37,6 @@
               </tr>
             </thead>
             <tbody>
-              <!-- <tr>
-                <td class="w-10">1</td>
-                <td class="w-40">Java</td>
-                <td class="w-20">1</td>
-                <td class="w-20">400</td>
-                <td class="w-20">20</td>
-                <td class="w-30"><button class="btn-success">修改</button></td>
-              </tr> -->
               <tr id="cartItem-row">
                 <td colspan="6" class="text-end pt-8">
                     <button class="btn-primary">付款</button>
@@ -53,9 +45,6 @@
             </tbody>
           </table>
     </section>
-
-    <!-- 熱門搜尋 -->
-    <div id="popular"></div>
 
     <!-- footer -->
     <div id="footer"></div>
@@ -68,18 +57,7 @@
             $('#cartItemsCtn').text(cartItems.length);
         });
         $('#footer').load('/src/fragements/footer.html');
-        $('#popular').load('/src/fragements/popularProduct.html',function(){
-            let template = document.getElementById("book-component-template");
-            books.map(book => {
-                book.price = currency.format(book.price);
-                const bookComponent = document.querySelector(`#book${book.id}`);
-                if(bookComponent){
-                    bookComponent.template = template;
-                    bookComponent.book = book;
-                }
-          });
-        });
-
+        
         cartItems.map(bookId => {
             let book = [...books].filter(b => b.id == bookId)[0];
             $('#cartItem-row').before(

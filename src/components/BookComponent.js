@@ -1,23 +1,10 @@
-function Book(id, type, name, price, stockQty) {
-    this.id = id;
-    this.type = type;
-    this.name = name;
-    this.price = price;
-    this.stockQty = stockQty;
-  }
-
-Book.prototype.getImageUrl = function () {
-    return `https://picsum.photos/240/224?random=${this.id}`;
-};
+import { addToCart } from '/src/js/cart.js';
 
 class BookComponent extends HTMLElement {
     constructor() {
       super();
-
-      // 加入物件屬性
       this._book = null;
       this._template = null;
-
       const shadowRoot = this.attachShadow({ mode: "open" });
     }
 
@@ -49,18 +36,11 @@ class BookComponent extends HTMLElement {
         img.src = this.book.getImageUrl();
         bookName.textContent = this.book.name;
         price.textContent = this.book.price;
-        btn.setAttribute('onclick',`addCart(${this.book.id})`);
+        btn.setAttribute('bookId', this.book.id);
+        btn.addEventListener('click', function(event) {
+            addToCart(event.target.getAttribute('bookId'));
+        });
       }
     }
   }
-
-  function addCart(bookId) {
-    alert(`已加入購物車${bookId}`);
-    let cartItems = window.sessionStorage.getItem('cartItems') == null ? '': window.sessionStorage.getItem('cartItems');
-    cartItems = cartItems == '' ? []: cartItems.split(',');
-    cartItems.push(bookId);
-    window.sessionStorage.setItem('cartItems',cartItems.join(','));
-    window.location.reload();
-  }
-
   customElements.define("book-component", BookComponent);

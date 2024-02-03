@@ -1,3 +1,15 @@
+function Book(id, type, name, price, stockQty) {
+  this.id = id;
+  this.type = type;
+  this.name = name;
+  this.price = price;
+  this.stockQty = stockQty;
+}
+
+Book.prototype.getImageUrl = function () {
+  return `https://picsum.photos/240/224?random=${this.id}`;
+};
+
 const books = [
   new Book(1, "IT", "Java", 400, 20),
   new Book(2, "IT", "Javascript", 400, 10),
@@ -14,4 +26,4 @@ const books = [
 let cartItems = window.sessionStorage.getItem('cartItems') ==null? "":window.sessionStorage.getItem('cartItems');
 cartItems = cartItems == '' ? []: cartItems.split(',');
 
-export { books,cartItems };
+export { books,cartItems, Book};

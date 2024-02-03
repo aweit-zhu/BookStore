@@ -23,5 +23,4 @@ const currency = new Intl.NumberFormat(locale, {
     style: 'currency',
     currency: currencyCode,
 });
-
 export { slide, rand, printProtoTypes, currency };
