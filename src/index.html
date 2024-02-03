@@ -139,27 +139,16 @@
     <script type="module">
         
         import { slide,currency } from '/src/js/util.js';
+        import { books,cartItems } from '/src/js/data.js';
 
-        $('#header').load('/src/fragements/header.html');
+        $('#header').load('/src/fragements/header.html',function() {
+          $('#cartItemsCtn').text(cartItems.length);
+        });
         $('#footer').load('/src/fragements/footer.html');
         $('#slide').load('/src/fragements/advertisement.html',function(){
            slide(document.querySelector("#advertisement"), 5000);
         });
         $('#popular').load('/src/fragements/popularProduct.html',function(){
-            
-            var books = [
-              new Book(1, "IT", "Java", 400),
-              new Book(2, "IT", "Javascript", 400),
-              new Book(3, "IT", "Spring", 700),
-              new Book(4, "IT", "Python", 350),
-              new Book(5, "IT", "SQL", 400),
-              new Book(6, "Lang", "華語文", 600),
-              new Book(7, "Lang", "英語", 800),
-              new Book(8, "Lang", "法語", 800),
-              new Book(9, "Lang", "多益檢定", 1700),
-              new Book(10, "Lang", "全民英檢", 1500),
-            ];
-
             let template = document.getElementById("book-component-template");
             books.map(book => {
                 book.price = currency.format(book.price);

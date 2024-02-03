@@ -15,7 +15,7 @@
     <!-- Header -->
     <div id="header" class="sticky top-0 bg-white z-50"></div>
 
-    <section class="section h-60 w-2/3 mt-10">
+    <section class="section h-full w-2/3 mt-10">
         <div class="flex min-w-11 mx-auto  relative justify-between items-center">
             <p class="rounded-full border-2 px-3 py-1 text-nowrap text-lg font-bold bg-green-300">1</p>
             <hr class="border-2 border-green-600 w-full"/>
@@ -28,24 +28,24 @@
         <table class="table-fixed mt-8 mx-auto text-center">
             <thead>
               <tr>
-                <th class="pb-4">序號</th>
-                <th class="pb-4">商品明細</th>
-                <th class="pb-4">數量</th>
-                <th class="pb-4">小計</th>
-                <th class="pb-4">庫存</th>
-                <th class="pb-4">變更明細</th>
+                <th class="pb-4 text-nowrap">序號</th>
+                <th class="pb-4 text-nowrap">商品明細</th>
+                <th class="pb-4 text-nowrap">數量</th>
+                <th class="pb-4 text-nowrap">小計</th>
+                <th class="pb-4 text-nowrap">庫存</th>
+                <th class="pb-4 text-nowrap">變更明細</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <!-- <tr>
                 <td class="w-10">1</td>
                 <td class="w-40">Java</td>
                 <td class="w-20">1</td>
                 <td class="w-20">400</td>
                 <td class="w-20">20</td>
                 <td class="w-30"><button class="btn-success">修改</button></td>
-              </tr>
-              <tr>
+              </tr> -->
+              <tr id="cartItem-row">
                 <td colspan="6" class="text-end pt-8">
                     <button class="btn-primary">付款</button>
                 </td>
@@ -62,24 +62,13 @@
 
     <script type="module">
         import { slide,currency } from '/src/js/util.js';
-
-        $('#header').load('/src/fragements/header.html');
+        import { books,cartItems } from '/src/js/data.js';
+        
+        $('#header').load('/src/fragements/header.html',function() {
+            $('#cartItemsCtn').text(cartItems.length);
+        });
         $('#footer').load('/src/fragements/footer.html');
         $('#popular').load('/src/fragements/popularProduct.html',function(){
-            
-            var books = [
-              new Book(1, "IT", "Java", 400),
-              new Book(2, "IT", "Javascript", 400),
-              new Book(3, "IT", "Spring", 700),
-              new Book(4, "IT", "Python", 350),
-              new Book(5, "IT", "SQL", 400),
-              new Book(6, "Lang", "華語文", 600),
-              new Book(7, "Lang", "英語", 800),
-              new Book(8, "Lang", "法語", 800),
-              new Book(9, "Lang", "多益檢定", 1700),
-              new Book(10, "Lang", "全民英檢", 1500),
-            ];
-
             let template = document.getElementById("book-component-template");
             books.map(book => {
                 book.price = currency.format(book.price);
@@ -90,6 +79,23 @@
                 }
           });
         });
+
+        cartItems.map(bookId => {
+            let book = [...books].filter(b => b.id == bookId)[0];
+            $('#cartItem-row').before(
+              `
+                <tr>
+                    <td class="w-10">${book.id}</td>
+                    <td class="w-40">${book.name}</td>
+                    <td class="w-20">1</td>
+                    <td class="w-20">${book.price}</td>
+                    <td class="w-20">${book.stockQty}</td>
+                    <td class="w-30"><button class="btn-success">修改</button></td>
+                </tr>
+              `
+            );
+        });
+
     </script>
 </body>
 
