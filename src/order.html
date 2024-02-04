@@ -10,15 +10,18 @@
 </head>
 <body class="overflow-auto" style="min-width: 600px;">
     <!-- Header -->
-    <div id="header" class="sticky top-0 bg-white z-50"></div>
+    <div id="header" class="sticky top-0 bg-white z-40"></div>
 
-    <section class="section h-full w-2/3 mt-10">
+    <section class="section w-2/3 mt-10">
         <!-- 狀態頁籤 -->
-        <div class="flex">
-            
+        <div class="flex h-12" id="status">
+            <button class="btn-success mx-1 w-20 self-end" data-id="0">全部</button>
+            <button class="btn-success bg-gray-400 mx-1 w-20 self-end" data-id="1">待出貨</button>
+            <button class="btn-success bg-gray-400 mx-1 w-20 self-end" data-id="2">已出貨</button>
+            <button class="btn-success bg-gray-400 mx-1 w-24 self-end text-nowrap" data-id="3">已到門市</button>
         </div>
         <!-- 訂單表格 -->
-        <table class="table-fixed mt-8 mx-auto text-center">
+        <table class="table-fixed my-8 mx-auto text-center mb-20">
             <thead>
               <tr>
                 <th class="pb-4 text-nowrap w-72">訂單編號</th>
@@ -29,17 +32,36 @@
                 <th class="pb-4 text-nowrap w-20">處理狀態</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="order">
             </tbody>
-          </table>
+        </table>
     </section>
 
+    <!-- 跳出視窗-->
+    <div class="modal hidden">
+        <button class="modal-close bi bi-x-square" id="close"></button>
+        <table class="table-fixed my-8 mx-auto text-center mb-20">
+            <thead>
+                <tr>
+                  <th class="pb-4 text-nowrap w-72">商品名稱</th>
+                  <th class="pb-4 text-nowrap w-72">單價</th>
+                  <th class="pb-4 text-nowrap w-20">數量</th>
+                  <th class="pb-4 text-nowrap w-20">商品總額</th>
+                  <th class="pb-4 text-nowrap w-40">處理狀態</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div id="overlay"></div>
+    
     <!-- footer -->
     <div id="footer"></div>
 
     <script type="module">
         import { slide,currency } from '/src/js/util.js';
-        import { books, orders,orderItems } from '/src/js/data.js';
+        import { books, orders,orderItems, Order } from '/src/js/data.js';
         import { cartItems } from '/src/js/cart.js';
   
         $('#header').load('/src/fragements/header.html',function() {
@@ -47,8 +69,60 @@
         });
         $('#footer').load('/src/fragements/footer.html');
 
-        console.log(books, orders,orderItems);
+        console.log(books, orders , orderItems);
         
+        $(document).ready(function() {
+            $('#status button').click(function() {
+                $('#status button').addClass('bg-gray-400');
+                $(this).toggleClass('bg-gray-400');
+                let status = $(this).attr('data-id'); // 1:全部,2:待出貨,3:已出貨,4:已到門市
+                fetchOrderByStatus(status);
+            });
+
+            fetchOrderByStatus(0);
+
+            $('#close,#overlay').click(function(){
+                toggleModal();
+            });
+        });
+
+        function fetchOrderByStatus(status) {
+            $('#order tr').remove();
+            [...orders].filter(order=> {
+                if(status == 0) 
+                    return true;
+                return order.status.id == status;
+            }).map( order => {
+                let tr = `
+                    <tr>
+                        <td>${order.orderId}</td>
+                        <td>${order.orderTime}</td>
+                        <td>${order.totalPrice}</td>
+                        <td><button class='btn-primary text-nowrap btn-order-detail' data-orderId='${order.orderId}'>詳細資訊</button></td>
+                        <td>${order.totalQty}</td>
+                        <td>${order.status.name}</td>
+                    </tr>
+                `;
+                $('#order').append(tr);
+            });
+
+            $('.btn-order-detail').click((event)=>fetchOrderItems(event));
+        }
+
+        function fetchOrderItems(event) {
+            toggleModal();
+            /** @type {HTMLButtonElement} */  let btn = event.target;
+            let orderId = btn.getAttribute('data-orderId');
+            [...orderItems]
+                .filter(orderItem => orderItem.orderId == orderId )
+                .map(orderItem => console.log(orderItem));
+        }
+
+        function toggleModal() {
+            $('#close').parent().toggleClass('hidden');
+            $('#overlay').toggleClass('modal-open');
+        }
+
     </script>
 </body>
 </html>
