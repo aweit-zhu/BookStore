@@ -139,7 +139,9 @@
 
     <script type="module">
         import { slide,currency } from '/src/js/util.js';
-        import { books,cartItems } from '/src/js/data.js';
+        import { books } from '/src/js/data.js';
+        import { cartItems } from '/src/js/cart.js';
+        
         $('#header').load('/src/fragements/header.html',function() {
           $('#cartItemsCtn').text(cartItems.length);
         });
@@ -147,7 +149,7 @@
         $('#slide').load('/src/fragements/advertisement.html',function(){
            slide(document.querySelector("#advertisement"), 5000);
         });
-        $('#popular').load('/src/fragements/popularProduct.html',function(){
+        $('#popular').load('/src/fragements/product.html',function(){
             let template = document.getElementById("book-component-template");
             books.map(book => {
                 book.price = currency.format(book.price);

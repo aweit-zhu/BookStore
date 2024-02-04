@@ -32,10 +32,12 @@ class BookComponent extends HTMLElement {
       const bookName = this.shadowRoot.querySelector("#bookName");
       const price = this.shadowRoot.querySelector("#price");
       const btn = this.shadowRoot.querySelector("button");
+      const stockyQty = this.shadowRoot.querySelector("#stockQty");
       if (this._book) {
         img.src = this.book.getImageUrl();
         bookName.textContent = this.book.name;
         price.textContent = this.book.price;
+        stockyQty.textContent = this.book.stockQty;
         btn.setAttribute('bookId', this.book.id);
         btn.addEventListener('click', function(event) {
             addToCart(event.target.getAttribute('bookId'));
