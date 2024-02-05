@@ -124,3 +124,5 @@ globalThis.getSessionUser = getSessionUser;
       Object.setPrototypeOf(book, Book.prototype);
   });
 ```
+
+### 沒辦法用 TypeScript？別擔心，你還可以寫 JSDoc(全名是「JavaScript Documentation」) 標注類型 <https://israynotarray.com/javascript/20230513/284079926/>
