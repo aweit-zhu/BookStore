@@ -1,8 +1,22 @@
+
+/**
+ * 
+ * @param {*} typeId 
+ * @param {*} typeName 
+ */
 export function BookType(typeId,typeName) {
   this.typeId = typeId;
   this.typeName = typeName;
 }
 
+/**
+ * 
+ * @param {*} id 
+ * @param {*} type 
+ * @param {*} name 
+ * @param {*} price 
+ * @param {*} stockQty 
+ */
 export function Book(id, type, name, price, stockQty) {
   this.id = id;
   this.type = type;
@@ -11,6 +25,10 @@ export function Book(id, type, name, price, stockQty) {
   this.stockQty = stockQty;
 }
 
+/**
+ * 
+ * @returns 
+ */
 Book.prototype.getImageUrl = function () {
   return `https://picsum.photos/240/224?random=${this.id}`;
 };
@@ -50,15 +68,18 @@ export function OrderItem(orderId,bookId,price,qty,total,status) {
   this.status = status;
 }
 
+/**
+ * 
+ * @param {*} id 
+ * @param {*} name 
+ */
 export function Status(id,name) {
   this.id = id;
   this.name = name;
 }
 
 
-
 /**
- * 
  * @param {*} roleId 
  * @param {*} roleName 
  */
@@ -68,12 +89,11 @@ export function Role(roleId,roleName){
 }
 
 /**
- * 
- * @param {*} id 
- * @param {*} username 
- * @param {*} password 
- * @param {*} email 
- * @param {*} role 
+ * @param {number} id 
+ * @param {string} username 
+ * @param {string} password 
+ * @param {string} email 
+ * @param {Role} role 
  */
 export function User(id,username,password,email, role) {
   this.id = id;
@@ -93,8 +113,6 @@ export const Roles = {
   "ADMIN": new Role(1,"ADMIN"),
   "USER": new Role(2,"USER")
 }
-
-//=================================================================================//
 
 export const users = [
   new User(1,'admin','admin','admin@example.com',Roles.ADMIN),

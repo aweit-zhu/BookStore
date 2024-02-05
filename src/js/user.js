@@ -1,5 +1,11 @@
-import { users, User,Role } from '/src/js/data.js';
+import { users, User,Role } from './data.js';
 
+/**
+ * 
+ * @param {*} username 
+ * @param {*} password 
+ * @returns 
+ */
 export function isValidUser(username, password) {
 
     let user = findUserByUsername(username);
@@ -12,6 +18,11 @@ export function isValidUser(username, password) {
     return false;
 }
 
+/**
+ * 
+ * @param {*} username 
+ * @returns 
+ */
 export function findUserByUsername(username) {
     const userOpt = [...users].filter(user => user.username == username);
     return userOpt.length == 1 ? userOpt[0]: null;
@@ -27,17 +38,21 @@ export function getSessionUser() {
        new Role( currentUser.role.roleId,  currentUser.role.roleName));
 }
 
+/**
+ * 
+ * @returns 
+ */
 export function isAdmin() {
     return getSessionUser().role.roleId == 1;
 }
 
+/**
+ * 
+ */
 export function logout() {
     window.sessionStorage.clear();
 }
 
-/**
- * @type {function(): User|null}
- */
 globalThis.sessionUser = getSessionUser;
 
 globalThis.isAdmin = isAdmin;

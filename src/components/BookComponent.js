@@ -1,4 +1,4 @@
-import { addToCart } from '/src/js/cart.js';
+import { addToCart } from '../js/cart.js';
 
 class BookComponent extends HTMLElement {
     constructor() {
@@ -17,6 +17,9 @@ class BookComponent extends HTMLElement {
       this.render();
     }
 
+    /**
+     * @param {HTMLElement} value 
+     */
     set template(value) {
         this._template = value;
         this.shadowRoot.appendChild(this._template.content.cloneNode(true));

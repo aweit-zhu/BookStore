@@ -6,7 +6,7 @@
     <title>阿偉特書店</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="./output.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="/src/js//jquery-3.7.1.min.js"></script>
     <script src="/src/components/BookComponent.js" type="module"></script>
     <script src="/src/js/cart.js" type="module"></script>
   </head>
@@ -136,12 +136,11 @@
 
     <!-- footer -->
     <div id="footer"></div>
-
     <script type="module">
         import { slide,currency } from '/src/js/util.js';
         import { findAllBooks } from '/src/js/book.js';
 
-        $('#header').load('/src/fragements/header.html');
+        $('#header').load('/src/fragements/header/header.html');
         $('#footer').load('/src/fragements/footer.html');
         $('#slide').load('/src/fragements/advertisement.html',function(){
            slide(document.querySelector("#advertisement"), 5000);
