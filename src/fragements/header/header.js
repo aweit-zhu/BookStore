@@ -9,7 +9,7 @@ document.querySelector('#username').textContent = currentUser.username;
 document.querySelector('#cartItemsCtn').textContent = findAllCartItems().length + '';
 document.querySelector('#logout').addEventListener('click',function(){
     logout();
-    window.location.href='./login.html';
+    window.location.href='/src/login.html';
 });
 
 console.log(currentUser);
