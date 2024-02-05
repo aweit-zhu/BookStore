@@ -11,11 +11,34 @@
 <body>
     <!-- Header -->
     <div id="header" class="sticky top-0 bg-white z-40"></div>
+
+    <section class="section h-full w-2/3 mt-10">
+        <table class="table-fixed mt-8 mx-auto text-center">
+            <thead>
+              <tr>
+                <th class="pb-4 text-nowrap">商品ID</th>
+                <th class="pb-4 text-nowrap">商品類別</th>
+                <th class="pb-4 text-nowrap">商品名稱</th>
+                <th class="pb-4 text-nowrap">小計</th>
+                <th class="pb-4 text-nowrap">庫存</th>
+                <th class="pb-4 text-nowrap">變更明細</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+    </section>
+
     <!-- footer -->
     <div id="footer"></div>
     <script type="module">
         $('#header').load('/src/fragements/header.html');
         $('#footer').load('/src/fragements/footer.html');
+
+        import { findAllBooks,findAllBookTypes } from '/src/js/book.js';
+        console.info(findAllBooks());
+        console.info(findAllBookTypes());
+
     </script>
 </body>
 </html>

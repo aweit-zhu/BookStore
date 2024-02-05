@@ -1,12 +1,13 @@
 import { findAllBooks,findBookById,minusBookSotckByBookId } from '/src/js/book.js';
 
 export function addToCart(bookId) {
-    let book = findBookById(bookId);
-    if(book.stockQty <= 0) {
-        alert(`${book.name} 已經無庫存`);
-        return;
+    
+    let message = minusBookSotckByBookId(bookId,1);
+    if(message !==''){
+      alert(message);
+      return;
     }
-    minusBookSotckByBookId(bookId,1);
+
     alert(`已加入購物車${bookId}`);
     let cartItems = findAllCartItems();
     cartItems.push(bookId);

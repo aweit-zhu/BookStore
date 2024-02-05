@@ -10,6 +10,7 @@
   "author": "阿偉特",
   "license": "ISC",
   "devDependencies": {
+    "jsdoc": "^4.0.2",
     "prettier": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.1"

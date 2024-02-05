@@ -1,4 +1,19 @@
-import { books,Book } from '/src/js/data.js';
+import { books,Book,BookType,BookTypes } from '/src/js/data.js';
+
+export function findAllBookTypes() {
+
+    let bookTypes = JSON.parse(window.sessionStorage.getItem('bookTypes'));
+
+    if(bookTypes ==null) {
+        window.sessionStorage.setItem('bookTypes', JSON.stringify(Object.values(BookTypes)));
+        bookTypes = JSON.parse(window.sessionStorage.getItem('bookTypes'));
+    } 
+
+    // 轉型成Booktype
+    bookTypes = bookTypes.map(bookType => new BookType(bookType.typeId, bookType.typeName));
+
+    return bookTypes;
+}
 
 export function findAllBooks() {
     return getBooks();
@@ -13,10 +28,17 @@ export function findBookById(bookId) {
 
 export function minusBookSotckByBookId(bookId, qty) {
    let books = findAllBooks();
+   let message = '';
    [...books].filter(book => book.id == bookId).forEach(book=> {
-        book.stockQty = book.stockQty - 1;
+        if(book.stockQty - qty < 0) {
+            message = `${book.name} 已經無庫存`;
+        } else {
+            book.stockQty = book.stockQty - qty;
+        }
    });
-   saveBooks(books);
+
+   if(message == '')saveBooks(books);
+   return message;
 }
 
 export function saveBook(book) {
@@ -34,6 +56,7 @@ function getBooks() {
 
     if(sessionBooks ==null) {
         saveBooks(books);
+        sessionBooks = JSON.parse(window.sessionStorage.getItem('books'));
     } 
 
     [...sessionBooks].map(book=> {

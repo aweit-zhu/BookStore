@@ -1,4 +1,4 @@
-import { users, User } from '/src/js/data.js';
+import { users, User,Role } from '/src/js/data.js';
 
 export function isValidUser(username, password) {
 
@@ -17,9 +17,14 @@ export function findUserByUsername(username) {
     return userOpt.length == 1 ? userOpt[0]: null;
 }
 
+/**
+ * @returns {User}
+ */
 export function getSessionUser() {
     const userJsonStr = window.sessionStorage.getItem('user');
-    return userJsonStr != null ? JSON.parse(userJsonStr): null;
+    const currentUser = userJsonStr == null ? null: JSON.parse(userJsonStr);
+    return new User(currentUser.id,currentUser.username,currentUser.password,currentUser.email, 
+       new Role( currentUser.role.roleId,  currentUser.role.roleName));
 }
 
 export function isAdmin() {
@@ -30,5 +35,9 @@ export function logout() {
     window.sessionStorage.clear();
 }
 
+/**
+ * @type {function(): User|null}
+ */
 globalThis.sessionUser = getSessionUser;
+
 globalThis.isAdmin = isAdmin;

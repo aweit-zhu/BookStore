@@ -1,3 +1,8 @@
+export function BookType(typeId,typeName) {
+  this.typeId = typeId;
+  this.typeName = typeName;
+}
+
 export function Book(id, type, name, price, stockQty) {
   this.id = id;
   this.type = type;
@@ -50,11 +55,26 @@ export function Status(id,name) {
   this.name = name;
 }
 
+
+
+/**
+ * 
+ * @param {*} roleId 
+ * @param {*} roleName 
+ */
 export function Role(roleId,roleName){
   this.roleId = roleId;
   this.roleName = roleName;
 }
 
+/**
+ * 
+ * @param {*} id 
+ * @param {*} username 
+ * @param {*} password 
+ * @param {*} email 
+ * @param {*} role 
+ */
 export function User(id,username,password,email, role) {
   this.id = id;
   this.username = username;
@@ -81,17 +101,22 @@ export const users = [
   new User(2,'user','user','user@example.com',Roles.USER),
 ];
 
+export const BookTypes = {
+  'IT': new BookType(1,'IT'),
+  'Lang': new BookType(2,'Lang'),
+}
+
 export const books = [
-  new Book(1, "IT", "Java", 400, 20),
-  new Book(2, "IT", "Javascript", 400, 10),
-  new Book(3, "IT", "Spring", 700, 25),
-  new Book(4, "IT", "Python", 350, 2),
-  new Book(5, "IT", "SQL", 400, 3),
-  new Book(6, "Lang", "華語文", 600, 20),
-  new Book(7, "Lang", "英語", 800, 6),
-  new Book(8, "Lang", "法語", 800, 4),
-  new Book(9, "Lang", "多益檢定", 1700, 20),
-  new Book(10, "Lang", "全民英檢", 1500, 50),
+  new Book(1, BookTypes.IT, "Java", 400, 20),
+  new Book(2, BookTypes.IT, "Javascript", 400, 10),
+  new Book(3, BookTypes.IT, "Spring", 700, 25),
+  new Book(4, BookTypes.IT, "Python", 350, 2),
+  new Book(5, BookTypes.IT, "SQL", 400, 3),
+  new Book(6, BookTypes.Lang, "華語文", 600, 20),
+  new Book(7, BookTypes.Lang, "英語", 800, 6),
+  new Book(8, BookTypes.Lang, "法語", 800, 4),
+  new Book(9, BookTypes.Lang, "多益檢定", 1700, 20),
+  new Book(10, BookTypes.Lang, "全民英檢", 1500, 50),
 ];
 
 export const orders = [
