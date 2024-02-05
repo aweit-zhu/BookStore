@@ -86,3 +86,7 @@ index.html
 ```
 var /** @type {HTMLImageElement} */ img = document.querySelector("#img");
 ```
+
+### 如何讓 session storage 存物件
+
+在 JavaScript 中，你可以使用 JSON.stringify 将对象转换为 JSON 字符串，然后将其存储在 Session Storage 中。当你需要检索时，可以使用 JSON.parse 将存储的 JSON 字符串转换回对象。

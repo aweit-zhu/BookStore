@@ -6,18 +6,25 @@
       </div>
       <div class="flex items-center justify-center">
         <i class="bi bi-person text-green-600 text-lg"></i>
-        <button class="btn-link">會員 |</button>
+        <button class="btn-link">會員<span id="username"></span> | </button>
         <button class="btn-link" onclick="window.location.href='/src/order.html'">訂單查詢 |</button>
         <button class="btn-link" onclick="window.location.href='/src/cart.html'">購物車 (<span id="cartItemsCtn"></span>) |</button>
         <i class="bi bi-globe"></i>
         <button class="btn-link">繁體 |</button>
         <i class="bi bi-box-arrow-left"></i>
-        <button
-          class="btn-link"
-          onclick="window.location.href='./login.html'"
-        >
-          登出
-        </button>
+        <button id="logout"  class="btn-link">登出</button>
       </div>
     </div>
   </header>
+
+  <script type="module">
+    import { getSessionUser,logout } from '/src/js/user.js';
+    import { findAllCartItems } from '/src/js/cart.js';
+    document.querySelector('#username').textContent = getSessionUser().username;
+    document.querySelector('#cartItemsCtn').textContent = findAllCartItems().length;
+    console.log(getSessionUser());
+    document.querySelector('#logout').addEventListener('click',function(){
+      logout();
+        window.location.href='./login.html'
+    });
+  </script>

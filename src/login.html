@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>阿偉特書店-會員登入</title>
     <link href="./output.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   </head>
   <body>
     <section class="section-success flex h-20 justify-center border-b-2 mt-8">
@@ -14,8 +15,8 @@
     </section>
     <section class="section-success h-auto w-1/2 justify-center">
       <form action="./index.html" class="mx-auto p-2">
-        <input type="text" class="login-input" placeholder="帳號" />
-        <input type="password" class="login-input" placeholder="密碼" />
+        <input type="text" class="login-input" placeholder="帳號"  name="username" value="admin"/>
+        <input type="password" class="login-input" placeholder="密碼" name="password" value="admin"/>
         <input
           type="text"
           class="login-input"
@@ -45,5 +46,24 @@
 
         Copyright © since 1995 books.com.tw All Rights Reserved.
     </footer>
+
+    <script type="module">
+
+      import { isValidUser } from '/src/js/user.js';
+
+      $('form').submit(function(event){
+          event.preventDefault();
+          let username = $(this).serializeArray()[0].value;
+          let password = $(this).serializeArray()[1].value;
+          console.log(username,password);
+          if(isValidUser(username,password)) {
+             window.location = $(this).attr('action');
+          } else {
+            alert('帳號或密碼輸入錯誤');
+          }
+      });
+
+    </script>
+
   </body>
 </html>

@@ -18,7 +18,8 @@ Book.prototype.getImageUrl = function () {
  * @param {*} totalQty    總數量
  * @param {*} status      訂單狀態
  */
-export function Order(orderId,orderTime,totalPrice,totalQty,status) {
+export function Order(userId,orderId,orderTime,totalPrice,totalQty,status) {
+  this.userId = userId;
   this.orderId = orderId;
   this.orderTime = orderTime;
   this.totalPrice = totalPrice;
@@ -49,6 +50,20 @@ export function Status(id,name) {
   this.name = name;
 }
 
+export function User(id,username,password,email) {
+  this.id = id;
+  this.username = username;
+  this.password = password;
+  this.email = email;
+}
+
+//=================================================================================//
+
+export const users = [
+  new User(1,'admin','admin','admin@example.com'),
+  new User(2,'user','user','user@example.com'),
+];
+
 export const books = [
   new Book(1, "IT", "Java", 400, 20),
   new Book(2, "IT", "Javascript", 400, 10),
@@ -69,12 +84,18 @@ export const OrderStatus = {
 }
 
 export const orders = [
-  new Order('20231024012313','2023/10/24 23:48:52',750,2,OrderStatus.ONGOING),
+  new Order(1,'20231024012313','2023/10/24 23:48:52',750,2,OrderStatus.ONGOING),
+  new Order(1,'20231024012314','2023/10/25 11:05:10',4000,2,OrderStatus.ARRIVED),
+  new Order(2,'20231024012312','2024/12/15 20:00:05',800,1,OrderStatus.WAITING),
 ];
 
 export const orderItems = [
   new OrderItem('20231024012313',1,400,1,400,OrderStatus.ONGOING),
-  new OrderItem('20231024012313',4,350,1,350,OrderStatus.ONGOING)
+  new OrderItem('20231024012313',4,350,1,350,OrderStatus.ONGOING),
+  new OrderItem('20231024012312',7,800,1,800,OrderStatus.WAITING),
+  new OrderItem('20231024012314',9,1700,1,1700,OrderStatus.ARRIVED),
+  new OrderItem('20231024012314',10,1500,1,1500,OrderStatus.ARRIVED),
+  new OrderItem('20231024012314',7,800,1,800,OrderStatus.ARRIVED)
 ];
 
 

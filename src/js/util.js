@@ -23,4 +23,10 @@ const currency = new Intl.NumberFormat(locale, {
     style: 'currency',
     currency: currencyCode,
 });
+
+export function toggleModal() {
+    $('#close').parent().toggleClass('hidden');
+    $('#overlay').toggleClass('modal-open');
+}
+
 export { slide, rand, printProtoTypes, currency };

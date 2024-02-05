@@ -51,14 +51,12 @@
     <script type="module">
         import { slide,currency } from '/src/js/util.js';
         import { books } from '/src/js/data.js';
-        import { cartItems } from '/src/js/cart.js';
+        import { findAllCartItems } from '/src/js/cart.js';
         
-        $('#header').load('/src/fragements/header.html',function() {
-            $('#cartItemsCtn').text(cartItems.length);
-        });
+        $('#header').load('/src/fragements/header.html');
         $('#footer').load('/src/fragements/footer.html');
         
-        cartItems.map(bookId => {
+        findAllCartItems().map(bookId => {
             let book = [...books].filter(b => b.id == bookId)[0];
             $('#cartItem-row').before(
               `

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href="./output.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 </head>
+
 <body class="overflow-auto" style="min-width: 600px;">
     <!-- Header -->
     <div id="header" class="sticky top-0 bg-white z-40"></div>
@@ -23,14 +25,14 @@
         <!-- 訂單表格 -->
         <table class="table-fixed my-8 mx-auto text-center mb-20">
             <thead>
-              <tr>
-                <th class="pb-4 text-nowrap w-72">訂單編號</th>
-                <th class="pb-4 text-nowrap w-72">訂購時間</th>
-                <th class="pb-4 text-nowrap w-20">訂單金額</th>
-                <th class="pb-4 text-nowrap w-20">商品名稱</th>
-                <th class="pb-4 text-nowrap w-40">數量</th>
-                <th class="pb-4 text-nowrap w-20">處理狀態</th>
-              </tr>
+                <tr>
+                    <th class="pb-4 text-nowrap w-72">訂單編號</th>
+                    <th class="pb-4 text-nowrap w-72">訂購時間</th>
+                    <th class="pb-4 text-nowrap w-20">訂單金額</th>
+                    <th class="pb-4 text-nowrap w-20">商品名稱</th>
+                    <th class="pb-4 text-nowrap w-40">數量</th>
+                    <th class="pb-4 text-nowrap w-20">處理狀態</th>
+                </tr>
             </thead>
             <tbody id="order">
             </tbody>
@@ -38,61 +40,54 @@
     </section>
 
     <!-- 跳出視窗-->
-    <div class="modal hidden">
+    <div class="modal hidden overflow-auto">
         <button class="modal-close bi bi-x-square" id="close"></button>
         <table class="table-fixed my-8 mx-auto text-center mb-20">
             <thead>
                 <tr>
-                  <th class="pb-4 text-nowrap w-72">商品名稱</th>
-                  <th class="pb-4 text-nowrap w-72">單價</th>
-                  <th class="pb-4 text-nowrap w-20">數量</th>
-                  <th class="pb-4 text-nowrap w-20">商品總額</th>
-                  <th class="pb-4 text-nowrap w-40">處理狀態</th>
+                    <th class="pb-4 text-nowrap w-20">商品圖片</th>
+                    <th class="pb-4 text-nowrap w-72">商品名稱</th>
+                    <th class="pb-4 text-nowrap w-20">單價</th>
+                    <th class="pb-4 text-nowrap w-20">數量</th>
+                    <th class="pb-4 text-nowrap w-20">商品總額</th>
+                    <th class="pb-4 text-nowrap w-40">處理狀態</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="orderItem">
             </tbody>
         </table>
     </div>
     <div id="overlay"></div>
-    
+
     <!-- footer -->
     <div id="footer"></div>
 
     <script type="module">
-        import { slide,currency } from '/src/js/util.js';
-        import { books, orders,orderItems, Order } from '/src/js/data.js';
-        import { cartItems } from '/src/js/cart.js';
-  
-        $('#header').load('/src/fragements/header.html',function() {
-            $('#cartItemsCtn').text(cartItems.length);
-        });
+        import { toggleModal } from '/src/js/util.js';
+        import { findBookById } from '/src/js/book.js';
+        import { findOrderByStatus, findOrderItemsByOrderId } from '/src/js/order.js';
+
+        $('#header').load('/src/fragements/header.html');
         $('#footer').load('/src/fragements/footer.html');
 
-        console.log(books, orders , orderItems);
-        
-        $(document).ready(function() {
-            $('#status button').click(function() {
+        $(document).ready(function () {
+            $('#status button').click(function () {
                 $('#status button').addClass('bg-gray-400');
                 $(this).toggleClass('bg-gray-400');
                 let status = $(this).attr('data-id'); // 1:全部,2:待出貨,3:已出貨,4:已到門市
-                fetchOrderByStatus(status);
+                clickStatucBtn(status);
             });
 
-            fetchOrderByStatus(0);
+            clickStatucBtn(0); // 訂單查詢(全部)
 
-            $('#close,#overlay').click(function(){
+            $('#close,#overlay').click(function (event) {
                 toggleModal();
             });
         });
 
-        function fetchOrderByStatus(status) {
+        function clickStatucBtn(status) {
             $('#order tr').remove();
-            [...orders].filter(order=> {
-                if(status == 0) 
-                    return true;
-                return order.status.id == status;
-            }).map( order => {
+            findOrderByStatus(status).map(order => {
                 let tr = `
                     <tr>
                         <td>${order.orderId}</td>
@@ -106,23 +101,30 @@
                 $('#order').append(tr);
             });
 
-            $('.btn-order-detail').click((event)=>fetchOrderItems(event));
+            $('.btn-order-detail').click((event) => clickOrderDetailBtn(event));
         }
 
-        function fetchOrderItems(event) {
+        function clickOrderDetailBtn(event) {
+            $('#orderItem tr').remove();
+            let orderId = event.target.getAttribute('data-orderId');
+            findOrderItemsByOrderId(orderId)
+                .map(orderItem => {
+                    $('#orderItem').append(
+                        `
+                        <tr>
+                            <td><img class="h-full" src="${findBookById(orderItem.bookId).getImageUrl()}"/></td>
+                            <td>${findBookById(orderItem.bookId).name}</td>    
+                            <td>${orderItem.price}</td>    
+                            <td>${orderItem.qty}</td>    
+                            <td>${orderItem.total}</td>    
+                            <td>${orderItem.status.name}</td>    
+                        </tr>
+                        `
+                    );
+                });
             toggleModal();
-            /** @type {HTMLButtonElement} */  let btn = event.target;
-            let orderId = btn.getAttribute('data-orderId');
-            [...orderItems]
-                .filter(orderItem => orderItem.orderId == orderId )
-                .map(orderItem => console.log(orderItem));
         }
-
-        function toggleModal() {
-            $('#close').parent().toggleClass('hidden');
-            $('#overlay').toggleClass('modal-open');
-        }
-
     </script>
 </body>
+
 </html>

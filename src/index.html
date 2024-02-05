@@ -140,11 +140,8 @@
     <script type="module">
         import { slide,currency } from '/src/js/util.js';
         import { books } from '/src/js/data.js';
-        import { cartItems } from '/src/js/cart.js';
 
-        $('#header').load('/src/fragements/header.html',function() {
-          $('#cartItemsCtn').text(cartItems.length);
-        });
+        $('#header').load('/src/fragements/header.html');
         $('#footer').load('/src/fragements/footer.html');
         $('#slide').load('/src/fragements/advertisement.html',function(){
            slide(document.querySelector("#advertisement"), 5000);

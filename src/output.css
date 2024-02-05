@@ -731,7 +731,7 @@ a:visited {
   z-index: 50;
   margin-left: auto;
   margin-right: auto;
-  height: 50%;
+  height: 66.666667%;
   width: 50%;
   border-radius: 0.25rem;
   border-width: 2px;
@@ -755,10 +755,12 @@ a:visited {
 }
 
 .modal-close {
-  position: absolute;
+  position: sticky;
   top: 0.25rem;
-  right: 0.5rem;
+  left: 100%;
   cursor: pointer;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
   font-size: 1.5rem;
   line-height: 2rem;
 }
@@ -971,6 +973,10 @@ a:visited {
 
 .w-32 {
   width: 8rem;
+}
+
+.w-36 {
+  width: 9rem;
 }
 
 .w-4\/5 {
