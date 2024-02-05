@@ -25,3 +25,5 @@ export function getSessionUser() {
 export function logout() {
     window.sessionStorage.clear();
 }
+
+globalThis.getSessionUser = getSessionUser;

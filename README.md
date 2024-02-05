@@ -90,3 +90,28 @@ var /** @type {HTMLImageElement} */ img = document.querySelector("#img");
 ### 如何讓 session storage 存物件
 
 在 JavaScript 中，你可以使用 JSON.stringify 将对象转换为 JSON 字符串，然后将其存储在 Session Storage 中。当你需要检索时，可以使用 JSON.parse 将存储的 JSON 字符串转换回对象。
+
+
+### 如何利用 live server 開啟 debugger 模式
+
+```
+.vscode/launch.json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://127.0.0.1:5500/src/login.html",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
+```
+
+### 如果你想在浏览器的 F12 控制台中访问模块中的变量，可以使用 globalThis 对象。在模块中定义的变量默认情况下是模块私有的，但你可以将其附加到 globalThis 上，以便在控制台中访问
+
+```
+globalThis.getSessionUser = getSessionUser;
+```

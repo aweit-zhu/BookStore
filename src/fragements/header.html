@@ -15,16 +15,20 @@
         <button id="logout"  class="btn-link">登出</button>
       </div>
     </div>
-  </header>
+</header>
 
-  <script type="module">
-    import { getSessionUser,logout } from '/src/js/user.js';
-    import { findAllCartItems } from '/src/js/cart.js';
-    document.querySelector('#username').textContent = getSessionUser().username;
-    document.querySelector('#cartItemsCtn').textContent = findAllCartItems().length;
-    console.log(getSessionUser());
-    document.querySelector('#logout').addEventListener('click',function(){
+<script type="module">
+  
+  import { routeInterceptor } from '/src/js/route.js';
+  routeInterceptor();
+
+  import { getSessionUser,logout } from '/src/js/user.js';
+  import { findAllCartItems } from '/src/js/cart.js';
+  document.querySelector('#username').textContent = getSessionUser().username;
+  document.querySelector('#cartItemsCtn').textContent = findAllCartItems().length;
+
+  document.querySelector('#logout').addEventListener('click',function(){
       logout();
-        window.location.href='./login.html'
-    });
-  </script>
+      window.location.href='./login.html'
+  });
+</script>

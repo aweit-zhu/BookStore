@@ -46,7 +46,7 @@
             <thead>
                 <tr>
                     <th class="pb-4 text-nowrap w-20">商品圖片</th>
-                    <th class="pb-4 text-nowrap w-72">商品名稱</th>
+                    <th class="pb-4 text-nowrap w-32">商品名稱</th>
                     <th class="pb-4 text-nowrap w-20">單價</th>
                     <th class="pb-4 text-nowrap w-20">數量</th>
                     <th class="pb-4 text-nowrap w-20">商品總額</th>
@@ -112,7 +112,7 @@
                     $('#orderItem').append(
                         `
                         <tr>
-                            <td><img class="h-full" src="${findBookById(orderItem.bookId).getImageUrl()}"/></td>
+                            <td><img src="${findBookById(orderItem.bookId).getImageUrl()}"/></td>
                             <td>${findBookById(orderItem.bookId).name}</td>    
                             <td>${orderItem.price}</td>    
                             <td>${orderItem.qty}</td>    
