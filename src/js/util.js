@@ -29,4 +29,32 @@ export function toggleModal() {
     $('#overlay').toggleClass('modal-open');
 }
 
+export const JSON_ = {
+    stringify: function(obj) {
+        return JSON.stringify(obj, (key, value) => {
+            if (value !== null && typeof value === 'object') {
+              // Include prototype properties
+              const proto = Object.getPrototypeOf(value);
+              if (proto !== null && Object.keys(proto).length > 0) {
+                value.__proto__ = proto;
+              }
+            }
+            return value;
+        });
+    },
+    parse:function(json) {
+        return JSON.parse(json, (key, value) => {
+            if (value !== null && typeof value === 'object') {
+              // Recreate prototype chain
+              const proto = Object.create(null);
+              Object.assign(proto, value.__proto__);
+              value.__proto__ = proto;
+            }
+            return value;
+        });
+    }
+}
+
+globalThis.JSON_ = JSON_;
+
 export { slide, rand, printProtoTypes, currency };

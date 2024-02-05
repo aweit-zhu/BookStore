@@ -50,14 +50,14 @@
 
     <script type="module">
         import { slide,currency } from '/src/js/util.js';
-        import { books } from '/src/js/data.js';
+        import { findAllBooks } from '/src/js/book.js';
         import { findAllCartItems } from '/src/js/cart.js';
         
         $('#header').load('/src/fragements/header.html');
         $('#footer').load('/src/fragements/footer.html');
         
         findAllCartItems().map(bookId => {
-            let book = [...books].filter(b => b.id == bookId)[0];
+            let book = [...findAllBooks()].filter(b => b.id == bookId)[0];
             $('#cartItem-row').before(
               `
                 <tr>

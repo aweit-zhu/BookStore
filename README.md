@@ -115,3 +115,12 @@ var /** @type {HTMLImageElement} */ img = document.querySelector("#img");
 ```
 globalThis.getSessionUser = getSessionUser;
 ```
+
+### 重新設定 prototype
+
+```
+  // 重新設定 Prototype
+  [...sessionBooks].map(book=> {
+      Object.setPrototypeOf(book, Book.prototype);
+  });
+```

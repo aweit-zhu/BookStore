@@ -22,8 +22,13 @@ export function getSessionUser() {
     return userJsonStr != null ? JSON.parse(userJsonStr): null;
 }
 
+export function isAdmin() {
+    return getSessionUser().role.roleId == 1;
+}
+
 export function logout() {
     window.sessionStorage.clear();
 }
 
-globalThis.getSessionUser = getSessionUser;
+globalThis.sessionUser = getSessionUser;
+globalThis.isAdmin = isAdmin;

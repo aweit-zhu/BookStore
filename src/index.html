@@ -139,7 +139,7 @@
 
     <script type="module">
         import { slide,currency } from '/src/js/util.js';
-        import { books } from '/src/js/data.js';
+        import { findAllBooks } from '/src/js/book.js';
 
         $('#header').load('/src/fragements/header.html');
         $('#footer').load('/src/fragements/footer.html');
@@ -148,7 +148,7 @@
         });
         $('#popular').load('/src/fragements/product.html',function(){
             let template = document.getElementById("book-component-template");
-            books.map(book => {
+            findAllBooks().map(book => {
                 book.price = currency.format(book.price);
                 const bookComponent = document.querySelector(`#book${book.id}`);
                 if(bookComponent){

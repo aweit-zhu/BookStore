@@ -12,4 +12,8 @@ export function routeInterceptor() {
         //console.log('ERROR');
         window.location.href='./login.html';
     }
+
+    if(!isAdmin() && path.indexOf('back.html')>=0) {
+        window.location.href='./login.html';
+    }
 }

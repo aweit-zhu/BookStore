@@ -1,12 +1,12 @@
 <header class="flex h-11 justify-center text-nowrap bg-white">
     <div class="flex w-2/3 justify-between">
       <div class="flex items-center justify-center">
-        <i class="bi bi-house-door"></i>
-        <p class="btn-link" onclick="window.location.href='/src/index.html'">回首頁</p>
+        <p class="btn-link" onclick="window.location.href='/src/index.html'"><i class="bi bi-house-door"></i>回首頁</p>
+        <p class="btn-link hidden" onclick="goToBackPage()" id="backBtn"><i class="bi bi-gear"></i>後台</p>
       </div>
       <div class="flex items-center justify-center">
         <i class="bi bi-person text-green-600 text-lg"></i>
-        <button class="btn-link">會員<span id="username"></span> | </button>
+        <button class="btn-link"><span id="username"></span> | </button>
         <button class="btn-link" onclick="window.location.href='/src/order.html'">訂單查詢 |</button>
         <button class="btn-link" onclick="window.location.href='/src/cart.html'">購物車 (<span id="cartItemsCtn"></span>) |</button>
         <i class="bi bi-globe"></i>
@@ -26,9 +26,25 @@
   import { findAllCartItems } from '/src/js/cart.js';
   document.querySelector('#username').textContent = getSessionUser().username;
   document.querySelector('#cartItemsCtn').textContent = findAllCartItems().length;
-
   document.querySelector('#logout').addEventListener('click',function(){
       logout();
       window.location.href='./login.html'
   });
+
+  console.log(sessionUser());
+
+  if(sessionUser().role.roleId == 1) {
+    document.querySelector('#backBtn').classList.toggle('hidden');
+  }
+
+</script>
+
+<script>
+
+  function goToBackPage() {
+    if(isAdmin()) {
+      window.location.href='/src/back.html';
+    }
+  }
+
 </script>

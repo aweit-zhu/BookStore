@@ -50,18 +50,35 @@ export function Status(id,name) {
   this.name = name;
 }
 
-export function User(id,username,password,email) {
+export function Role(roleId,roleName){
+  this.roleId = roleId;
+  this.roleName = roleName;
+}
+
+export function User(id,username,password,email, role) {
   this.id = id;
   this.username = username;
   this.password = password;
   this.email = email;
+  this.role = role;
+}
+
+export const OrderStatus = {
+  'WAITING': new Status(1, '待出貨'),
+  'ONGOING': new Status(2, '已出貨'),
+  'ARRIVED': new Status(3, '已到門市'),
+}
+
+export const Roles = {
+  "ADMIN": new Role(1,"ADMIN"),
+  "USER": new Role(2,"USER")
 }
 
 //=================================================================================//
 
 export const users = [
-  new User(1,'admin','admin','admin@example.com'),
-  new User(2,'user','user','user@example.com'),
+  new User(1,'admin','admin','admin@example.com',Roles.ADMIN),
+  new User(2,'user','user','user@example.com',Roles.USER),
 ];
 
 export const books = [
@@ -77,12 +94,6 @@ export const books = [
   new Book(10, "Lang", "全民英檢", 1500, 50),
 ];
 
-export const OrderStatus = {
-  'WAITING': new Status(1, '待出貨'),
-  'ONGOING': new Status(2, '已出貨'),
-  'ARRIVED': new Status(3, '已到門市'),
-}
-
 export const orders = [
   new Order(1,'20231024012313','2023/10/24 23:48:52',750,2,OrderStatus.ONGOING),
   new Order(1,'20231024012314','2023/10/25 11:05:10',4000,2,OrderStatus.ARRIVED),
@@ -97,5 +108,3 @@ export const orderItems = [
   new OrderItem('20231024012314',10,1500,1,1500,OrderStatus.ARRIVED),
   new OrderItem('20231024012314',7,800,1,800,OrderStatus.ARRIVED)
 ];
-
-
