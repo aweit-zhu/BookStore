@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>後臺管理</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link href="./output.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <link href="/src/output.css" rel="stylesheet" />
+    <script src="/src/js/jquery-3.7.1.min.js"></script>
+    <script type="module" src="/src/js/layout.js"></script>
 </head>
 <body>
     <!-- Header -->
-    <div id="header" class="sticky top-0 bg-white z-40"></div>
+    
 
     <section class="section h-full w-2/3 mt-10">
         <table class="table-fixed mt-8 mx-auto text-center">
@@ -29,16 +30,6 @@
           </table>
     </section>
 
-    <!-- footer -->
-    <div id="footer"></div>
-    <script type="module">
-        $('#header').load('/src/fragements/header.html');
-        $('#footer').load('/src/fragements/footer.html');
-
-        import { findAllBooks,findAllBookTypes } from '/src/js/book.js';
-        console.info(findAllBooks());
-        console.info(findAllBookTypes());
-
-    </script>
+    <script type="module" src="./back.js"></script>
 </body>
 </html>

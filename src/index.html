@@ -9,12 +9,10 @@
     <script src="/src/js//jquery-3.7.1.min.js"></script>
     <script src="/src/components/BookComponent.js" type="module"></script>
     <script src="/src/js/cart.js" type="module"></script>
+    <script type="module" src="/src/js/layout.js"></script>
   </head>
   <body class="overflow-auto" style="min-width: 600px;">
     
-    <!-- Header -->
-    <div id="header" class="sticky top-0 bg-white z-40"></div>
-
     <!-- 廣告看板 -->
     <div id="slide"></div>
 
@@ -134,17 +132,14 @@
       </div>
     </section>
 
-    <!-- footer -->
-    <div id="footer"></div>
     <script type="module">
         import { slide,currency } from '/src/js/util.js';
         import { findAllBooks } from '/src/js/book.js';
 
-        $('#header').load('/src/fragements/header/header.html');
-        $('#footer').load('/src/fragements/footer.html');
         $('#slide').load('/src/fragements/advertisement.html',function(){
            slide(document.querySelector("#advertisement"), 5000);
         });
+
         $('#popular').load('/src/fragements/product.html',function(){
             let template = document.getElementById("book-component-template");
             findAllBooks().map(book => {

@@ -7,12 +7,11 @@
     <title>購物車</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="./output.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="/src/js//jquery-3.7.1.min.js"></script>
+    <script type="module" src="/src/js/layout.js"></script>
 </head>
 
 <body class="overflow-auto" style="min-width: 600px;">
-    <!-- Header -->
-    <div id="header" class="sticky top-0 bg-white z-40"></div>
 
     <section class="section h-full w-2/3 mt-10">
         <div class="flex min-w-11 mx-auto  relative justify-between items-center">
@@ -45,16 +44,9 @@
           </table>
     </section>
 
-    <!-- footer -->
-    <div id="footer"></div>
-
     <script type="module">
-        import { slide,currency } from '/src/js/util.js';
         import { findAllBooks } from '/src/js/book.js';
         import { findAllCartItems } from '/src/js/cart.js';
-        
-        $('#header').load('/src/fragements/header/header.html');
-        $('#footer').load('/src/fragements/footer.html');
         
         findAllCartItems().map(bookId => {
             let book = [...findAllBooks()].filter(b => b.id == bookId)[0];

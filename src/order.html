@@ -8,11 +8,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="./output.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script type="module" src="/src/js/layout.js"></script>
 </head>
 
 <body class="overflow-auto" style="min-width: 600px;">
-    <!-- Header -->
-    <div id="header" class="sticky top-0 bg-white z-40"></div>
 
     <section class="section w-2/3 mt-10">
         <!-- 狀態頁籤 -->
@@ -59,16 +58,10 @@
     </div>
     <div id="overlay"></div>
 
-    <!-- footer -->
-    <div id="footer"></div>
-
     <script type="module">
         import { toggleModal } from '/src/js/util.js';
         import { findBookById } from '/src/js/book.js';
         import { findOrderByStatus, findOrderItemsByOrderId } from '/src/js/order.js';
-
-        $('#header').load('/src/fragements/header/header.html');
-        $('#footer').load('/src/fragements/footer.html');
 
         $(document).ready(function () {
             $('#status button').click(function () {
