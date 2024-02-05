@@ -1,10 +1,15 @@
-import { books,Book,BookType,BookTypes } from '/src/js/data.js';
+import { books,Book,BookType,BookTypes } from './data.js';
 
+/**
+ * 
+ * @returns {Array<BookType>}
+ */
 export function findAllBookTypes() {
 
     let bookTypes = JSON.parse(window.sessionStorage.getItem('bookTypes'));
 
     if(bookTypes ==null) {
+        // @ts-ignore
         window.sessionStorage.setItem('bookTypes', JSON.stringify(Object.values(BookTypes)));
         bookTypes = JSON.parse(window.sessionStorage.getItem('bookTypes'));
     } 
@@ -15,10 +20,19 @@ export function findAllBookTypes() {
     return bookTypes;
 }
 
+/**
+ * 
+ * @returns {Array<Book>}
+ */
 export function findAllBooks() {
     return getBooks();
 }
 
+/**
+ * 
+ * @param {number} bookId 
+ * @returns  {Book}
+ */
 export function findBookById(bookId) {
 
     const findBook = [...findAllBooks()].filter(book => book.id == bookId);
@@ -26,6 +40,12 @@ export function findBookById(bookId) {
     return findBook.length == 0 ? null: findBook[0];
 }
 
+/**
+ * 
+ * @param {number} bookId 
+ * @param {number} qty 
+ * @returns {string}
+ */
 export function minusBookSotckByBookId(bookId, qty) {
    let books = findAllBooks();
    let message = '';
@@ -41,6 +61,7 @@ export function minusBookSotckByBookId(bookId, qty) {
    return message;
 }
 
+// @ts-ignore
 export function saveBook(book) {
 
     getBooks();
@@ -50,6 +71,10 @@ function saveBooks(books) {
     window.sessionStorage.setItem('books', JSON.stringify([...books]));
 }
 
+/**
+ * 
+ * @returns {Array<Book>}
+ */
 function getBooks() {
 
     let sessionBooks = JSON.parse(window.sessionStorage.getItem('books'));
@@ -60,6 +85,7 @@ function getBooks() {
     } 
 
     [...sessionBooks].map(book=> {
+        // @ts-ignore
         Object.setPrototypeOf(book, Book.prototype);
     });
 

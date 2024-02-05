@@ -1,8 +1,8 @@
 
 /**
  * 
- * @param {*} typeId 
- * @param {*} typeName 
+ * @param {number} typeId 
+ * @param {string} typeName 
  */
 export function BookType(typeId,typeName) {
   this.typeId = typeId;
@@ -11,11 +11,11 @@ export function BookType(typeId,typeName) {
 
 /**
  * 
- * @param {*} id 
- * @param {*} type 
- * @param {*} name 
- * @param {*} price 
- * @param {*} stockQty 
+ * @param {number} id 
+ * @param {BookType} type 
+ * @param {string} name 
+ * @param {number} price 
+ * @param {number} stockQty 
  */
 export function Book(id, type, name, price, stockQty) {
   this.id = id;
@@ -35,11 +35,11 @@ Book.prototype.getImageUrl = function () {
 
 /**
  * 
- * @param {*} orderId     訂單編號
- * @param {*} orderTime   下單時間
- * @param {*} totalPrice  總金額
- * @param {*} totalQty    總數量
- * @param {*} status      訂單狀態
+ * @param {string} orderId     訂單編號
+ * @param {string} orderTime   下單時間
+ * @param {number} totalPrice  總金額
+ * @param {number} totalQty    總數量
+ * @param {Status} status      訂單狀態
  */
 export function Order(userId,orderId,orderTime,totalPrice,totalQty,status) {
   this.userId = userId;
@@ -52,12 +52,12 @@ export function Order(userId,orderId,orderTime,totalPrice,totalQty,status) {
 
 /**
  * 
- * @param {*} orderId 訂單編號
- * @param {*} bookId  書本ID
- * @param {*} price   售價
- * @param {*} qty     購買數量
- * @param {*} total   金額
- * @param {*} status  狀態
+ * @param {string} orderId 訂單編號
+ * @param {number} bookId  書本ID
+ * @param {number} price   售價
+ * @param {number} qty     購買數量
+ * @param {number} total   金額
+ * @param {Status} status  狀態
  */
 export function OrderItem(orderId,bookId,price,qty,total,status) {
   this.orderId = orderId;
@@ -70,8 +70,8 @@ export function OrderItem(orderId,bookId,price,qty,total,status) {
 
 /**
  * 
- * @param {*} id 
- * @param {*} name 
+ * @param {number} id 
+ * @param {string} name 
  */
 export function Status(id,name) {
   this.id = id;
@@ -80,8 +80,8 @@ export function Status(id,name) {
 
 
 /**
- * @param {*} roleId 
- * @param {*} roleName 
+ * @param {number} roleId 
+ * @param {string} roleName 
  */
 export function Role(roleId,roleName){
   this.roleId = roleId;
