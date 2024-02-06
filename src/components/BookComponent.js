@@ -18,7 +18,7 @@ class BookComponent extends HTMLElement {
     }
 
     /**
-     * @param {HTMLElement} value 
+     * @param {HTMLTemplateElement} value 
      */
     set template(value) {
         this._template = value;

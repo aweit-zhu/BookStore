@@ -67,6 +67,15 @@ export function findBookByBooksAndId(books,bookId) {
 
 /**
  * 
+ * @param {string} bookTypeName 
+ * @returns {Array<Book>}
+ */
+export function findBooksByTypeName(bookTypeName) {
+    return getBooks().filter(book => book.type.typeName == bookTypeName);
+}
+
+/**
+ * 
  * @param {number} bookId 
  * @param {number} qty 
  * @returns {string}
@@ -109,6 +118,27 @@ export function saveBook(updateBook) {
     } catch (error) {
         throw error;
     }
+}
+
+/**
+ * 
+ * @param {number} bookId 
+ * @returns { number }
+ */
+export function deleteBookById(bookId) {
+    let books = getBooks();
+    try {
+        let existingBook = findBookByBooksAndId(books, bookId);
+        if(existingBook == null) {
+            throw Error(`Not Found: Book Id - ${bookId}`);
+        }
+        books = books.filter(book=> book.id != bookId);
+        saveBooks(books);
+        return 1;
+    } catch (error) {
+        throw error;
+    }
+    return 1;
 }
 
 /**

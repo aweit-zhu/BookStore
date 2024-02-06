@@ -1,4 +1,4 @@
-import { findAllBooks, findAllBookTypes, findBookTypeByTypeName, saveBook } from "../../js/book.js";
+import { findAllBooks, findAllBookTypes, findBookTypeByTypeName, saveBook, deleteBookById } from "../../js/book.js";
 import { Book } from '../../js/data.js';
 
 console.info(findAllBooks());
@@ -51,6 +51,21 @@ $('.update').on('click',function() {
     }
     window.location.reload();
 });
+
+$('.delete').on('click',function() {
+    let bookId = Number($(this).attr('data-book-id'));
+    let bookName = String($('#bookName_'+bookId).val());
+    try {
+        if(confirm(`確定要刪除 ${bookName}?`)) {
+            deleteBookById(bookId);
+        }
+    } catch (error) {
+        alert(error);
+    }
+    window.location.reload();
+});
+
+
 
 $('.typeName').on('change',function(event){
     let value = $(event.target).val();
