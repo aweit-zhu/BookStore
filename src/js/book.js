@@ -22,6 +22,18 @@ export function findAllBookTypes() {
 
 /**
  * 
+ * @param {string} typeName 
+ * @returns {BookType | null}
+ */
+export function findBookTypeByTypeName(typeName) {
+
+    let bookTypes = findAllBookTypes().filter(bt => bt.typeName == typeName);
+
+    return bookTypes.length == 1 ? bookTypes[0]: null;
+}
+
+/**
+ * 
  * @returns {Array<Book>}
  */
 export function findAllBooks() {
@@ -31,11 +43,24 @@ export function findAllBooks() {
 /**
  * 
  * @param {number} bookId 
- * @returns  {Book}
+ * @returns  {Book | null}
  */
 export function findBookById(bookId) {
 
-    const findBook = [...findAllBooks()].filter(book => book.id == bookId);
+    const findBook = getBooks().filter(book => book.id == bookId);
+
+    return findBook.length == 0 ? null: findBook[0];
+}
+
+/**
+ * 
+ * @param {Array<Book>} books 
+ * @param {number} bookId 
+ * @returns { Book | null }
+ */
+export function findBookByBooksAndId(books,bookId) {
+
+    const findBook = books.filter(book => book.id == bookId);
 
     return findBook.length == 0 ? null: findBook[0];
 }
@@ -47,9 +72,9 @@ export function findBookById(bookId) {
  * @returns {string}
  */
 export function minusBookSotckByBookId(bookId, qty) {
-   let books = findAllBooks();
+   let books = getBooks();
    let message = '';
-   [...books].filter(book => book.id == bookId).forEach(book=> {
+   books.filter(book => book.id == bookId).forEach(book=> {
         if(book.stockQty - qty < 0) {
             message = `${book.name} 已經無庫存`;
         } else {
@@ -61,12 +86,35 @@ export function minusBookSotckByBookId(bookId, qty) {
    return message;
 }
 
-// @ts-ignore
-export function saveBook(book) {
+/**
+ * 
+ * @param { Book } updateBook
+ * @returns { number }
+ */
+export function saveBook(updateBook) {
+    let books = getBooks();
+    try {
+        let existingBook = findBookByBooksAndId(books, updateBook.id);
+        if(existingBook == null) {
+            throw Error(`Not Found: Book Id - ${updateBook.id}`);
+        }
+        Object.assign(existingBook, updateBook);
 
-    getBooks();
+        if(existingBook.stockQty < 0 ) {
+            throw Error(`Stock Qty Error: Book Id - ${updateBook.id}`);
+        }
+
+        saveBooks(books);
+        return 1;
+    } catch (error) {
+        throw error;
+    }
 }
 
+/**
+ * 
+ * @param {Array<Book>} books 
+ */
 function saveBooks(books) {
     window.sessionStorage.setItem('books', JSON.stringify([...books]));
 }

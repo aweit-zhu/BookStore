@@ -1,4 +1,4 @@
-import { findAllBooks, findAllBookTypes } from "../../js/book.js";
+import { findAllBooks, findAllBookTypes, findBookTypeByTypeName, saveBook } from "../../js/book.js";
 import { Book } from '../../js/data.js';
 
 console.info(findAllBooks());
@@ -35,12 +35,21 @@ let bookTypes = findAllBookTypes();
 });
 
 $('.update').on('click',function() {
-    let bookId = $(this).attr('data-book-id');
+    let bookId = Number($(this).attr('data-book-id'));
     let typeName = $('#typeName_'+bookId).attr('value');
-    let bookName = $('#bookName_'+bookId).val();
-    let bookPrice = $('#bookPrice_'+bookId).val();
-    let bookStockQty = $('#bookStockQty_'+bookId).val();
-    console.log(bookId, typeName, bookName,bookPrice,bookStockQty );
+    let bookName = String($('#bookName_'+bookId).val());
+    let bookPrice = Number($('#bookPrice_'+bookId).val());
+    let bookStockQty = Number($('#bookStockQty_'+bookId).val());
+    let bookType = findBookTypeByTypeName(typeName);
+    try {
+        let rowUpdated = saveBook(Book.newInstance(bookId,bookType.typeId,bookType.typeName,bookName,bookPrice,bookStockQty));
+        if(rowUpdated == 1) {
+            alert(`更新成功: ${bookName} (${bookId})`);
+        }
+    } catch (error) {
+        alert(error);
+    }
+    window.location.reload();
 });
 
 $('.typeName').on('change',function(event){

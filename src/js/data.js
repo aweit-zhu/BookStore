@@ -27,6 +27,22 @@ export function Book(id, type, name, price, stockQty) {
 
 /**
  * 
+ * @param {number} bookId 
+ * @param {number} bookTypeId 
+ * @param {string} bookTypeName 
+ * @param {string} bookName 
+ * @param {number} bookPrice 
+ * @param {number} bookStockQty 
+ * @returns { Book }
+ */
+Book.newInstance = function(bookId,bookTypeId,bookTypeName,bookName,bookPrice,bookStockQty) {
+  let bookType = new BookType(Number(bookTypeId),String(bookTypeName))
+  let book = new Book(Number(bookId),bookType,String(bookName),Number(bookPrice),Number(bookStockQty));
+  return book;
+}
+
+/**
+ * 
  * @returns 
  */
 Book.prototype.getImageUrl = function () {
