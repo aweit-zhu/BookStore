@@ -39,7 +39,7 @@ class BookComponent extends HTMLElement {
       if (this._book) {
         img.src = this.book.getImageUrl();
         bookName.textContent = this.book.name;
-        price.textContent = this.book.price;
+        price.textContent = '$'+this.book.price;
         stockyQty.textContent = this.book.stockQty;
         btn.setAttribute('bookId', this.book.id);
         btn.addEventListener('click', function(event) {

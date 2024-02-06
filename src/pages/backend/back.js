@@ -42,7 +42,7 @@ $('.update').on('click',function() {
     let bookStockQty = Number($('#bookStockQty_'+bookId).val());
     let bookType = findBookTypeByTypeName(typeName);
     try {
-        let rowUpdated = saveBook(Book.newInstance(bookId,bookType.typeId,bookType.typeName,bookName,bookPrice,bookStockQty));
+        let rowUpdated = saveBook(Book.newInstance(bookId,bookType.typeId,bookType.typeName,bookType.color,bookName,bookPrice,bookStockQty));
         if(rowUpdated == 1) {
             alert(`更新成功: ${bookName} (${bookId})`);
         }
@@ -64,7 +64,6 @@ $('.delete').on('click',function() {
     }
     window.location.reload();
 });
-
 
 
 $('.typeName').on('change',function(event){

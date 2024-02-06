@@ -133,7 +133,7 @@
     </section>
 
     <script type="module">
-        import { slide,currency } from '/src/js/util.js';
+        import { slide,currency,rand } from '/src/js/util.js';
         import { findAllBooks,findAllBookTypes,findBooksByTypeName } from '/src/js/book.js';
 
         $('#slide').load('/src/fragements/advertisement.html',function(){
@@ -142,7 +142,6 @@
 
         $('#popular').load('/src/fragements/product.html',function(){
             let template = document.getElementById("book-component-template");
-            const color = ['green','purple'];
             findAllBookTypes().map((booType,index) => {
               $('#popular').append(
                 `
@@ -152,7 +151,7 @@
                           src="https://picsum.photos/288/224?random?${booType.typeId}"
                           class="h-full w-3/4 rounded-3xl mx-auto opacity-60"
                       />
-                      <p class="absolute-x-center bottom-0 absolute text-nowrap text-white text-center text-lg bg-gradient-to-r from-${color[index]}-500 w-3/4 rounded">${booType.typeName}</p>
+                      <p class="absolute-x-center bottom-0 absolute text-nowrap text-white text-center text-lg bg-gradient-to-r from-${booType.color}-500 w-3/4 rounded">${booType.typeName}</p>
                     </div>
                     <book-component class="relative mx-1 w-32 md:w-44 flex-shrink-0 rounded border-2"></book-component>
                     <book-component class="relative mx-1 w-32 md:w-44 flex-shrink-0 rounded border-2"></book-component>

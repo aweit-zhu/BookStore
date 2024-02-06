@@ -3,10 +3,12 @@
  * 
  * @param {number} typeId 
  * @param {string} typeName 
+ * @param {string} color 
  */
-export function BookType(typeId,typeName) {
+export function BookType(typeId,typeName,color) {
   this.typeId = typeId;
   this.typeName = typeName;
+  this.color = color;
 }
 
 /**
@@ -35,8 +37,8 @@ export function Book(id, type, name, price, stockQty) {
  * @param {number} bookStockQty 
  * @returns { Book }
  */
-Book.newInstance = function(bookId,bookTypeId,bookTypeName,bookName,bookPrice,bookStockQty) {
-  let bookType = new BookType(Number(bookTypeId),String(bookTypeName))
+Book.newInstance = function(bookId,bookTypeId,bookTypeName,bookTypeColor,bookName,bookPrice,bookStockQty) {
+  let bookType = new BookType(Number(bookTypeId),String(bookTypeName),String(bookTypeColor))
   let book = new Book(Number(bookId),bookType,String(bookName),Number(bookPrice),Number(bookStockQty));
   return book;
 }
@@ -136,8 +138,9 @@ export const users = [
 ];
 
 export const BookTypes = {
-  'IT': new BookType(1,'IT'),
-  'Lang': new BookType(2,'Lang'),
+  'IT': new BookType(1,'IT','green'),
+  'Lang': new BookType(2,'Lang','purple'),
+  'Social': new BookType(2,'Social','blue'),
 }
 
 export const books = [
@@ -151,6 +154,7 @@ export const books = [
   new Book(8, BookTypes.Lang, "法語", 800, 4),
   new Book(9, BookTypes.Lang, "多益檢定", 1700, 20),
   new Book(10, BookTypes.Lang, "全民英檢", 1500, 50),
+  new Book(11, BookTypes.Social, "社會學", 300, 3),
 ];
 
 export const orders = [

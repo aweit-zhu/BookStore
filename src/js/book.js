@@ -15,7 +15,7 @@ export function findAllBookTypes() {
     } 
 
     // 轉型成Booktype
-    bookTypes = bookTypes.map(bookType => new BookType(bookType.typeId, bookType.typeName));
+    bookTypes = bookTypes.map(bookType => new BookType(bookType.typeId, bookType.typeName,bookType.color));
 
     return bookTypes;
 }
